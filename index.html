@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartão Interativo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding-top: 40px;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      width: 320px;
+      text-align: center;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .content {
+      background: #db423c;
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      transition: all 0.4s ease;
+    }
+
+    .bio {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+      padding: 0 20px;
+      color: white;
+    }
+
+    .content:hover .bio {
+      max-height: 200px;
+      padding: 20px;
+    }
+
+    .arrow {
+      font-size: 24px;
+      color: white;
+      padding: 10px 0;
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+
+    .content:hover .arrow {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="hugo sem fundo.png" class="photo" alt="Hugo">
+    <div class="content">
+      <div class="arrow">▼</div>
+      <div class="bio">
+        <h3>Hugo Carvalho</h3>
+        <p>Formador experiente na área tecnológica com paixão por educação e inovação.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
