@@ -103,7 +103,8 @@
       padding: 45px 24px 24px; /* padding-top ligeiramente reduzido */
     }
 
-    .content p {
+  .content p:not(:last-child) {
+  margin-bottom: 16px;
       font-size: 15px;
       text-align: justify;
       line-height: 1.6;
@@ -121,12 +122,11 @@
       <div class="arrow">▼</div>
     </div>
     <div class="content">
-      &nbsp;
-      &nbsp;
-      &nbsp;
+  
+      <div class="content">
       <p>Licenciado em Arte e Multimédia na Faculdade de Belas Artes - Universidade de Lisboa. </p>
-      <p></p>
-      <p>Trabalhou em Ilustração, banda desenhada, motion graphics, e em vários projetos de videojogos, na Ignite games e na Nerd Monkeys, como o Flooded Village..</p>
+      <p>Trabalhou em Ilustração, banda desenhada, motion graphics, e em vários projetos de videojogos, na Ignite games e na Nerd Monkeys, como o Flooded Village.</p>
+      </div>
     </div>
   </div>
 </body>
