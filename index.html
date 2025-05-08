@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartão Interativo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 420px;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+      z-index: 0;
+    }
+
+    .container:hover .background {
+      transform: scale(1.2);
+    }
+
+    .photo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-height: 100%;
+      z-index: 2;
+    }
+
+    .bio {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .container:hover .bio {
+      opacity: 1;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(0deg);
+      font-size: 24px;
+      color: white;
+      z-index: 3;
+      transition: transform 0.4s ease;
+    }
+
+    .container:hover .arrow {
+      transform: translateX(-50%) rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="fundo.svg" class="background" alt="Fundo">
+    <img src="hugo sem fundo.png" class="photo" alt="Hugo">
+    <div class="bio">
+      <h3>Hugo Carvalho</h3>
+      <p>Formador experiente na área tecnológica com paixão por educação e inovação.</p>
+    </div>
+    <div class="arrow">▼</div>
+  </div>
+</body>
+</html>
