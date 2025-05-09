@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Equipa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: transparent;
+      padding: 40px;
+    }
+    .group-title {
+      font-size: 28px;
+      color: #e25e0e;
+      margin: 40px 0 10px;
+      border-bottom: 3px solid #e25e0e;
+      display: inline-block;
+    }
+    .subgroup-title {
+      font-size: 20px;
+      color: #333;
+      margin: 20px 0 10px;
+    }
+    .card-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      margin: auto;
+    }
+    .photo-container {
+      position: relative;
+    }
+    .photo {
+      width: 100%;
+      display: block;
+      border-radius: 20px 20px 0 0;
+    }
+    .floating-name {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.65);
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      transition: transform 0.5s ease;
+      z-index: 3;
+      white-space: nowrap;
+    }
+    .card:hover .floating-name {
+      transform: translate(-50%, 110px);
+    }
+    .title-arrow {
+      background: #2a2a2a;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+    }
+    .arrow {
+      background: #db423c;
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .arrow {
+      transform: rotate(180deg);
+    }
+    .content {
+      background: #2a2a2a;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      max-height: 0;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+      padding: 0 24px;
+    }
+    .card:hover .content {
+      max-height: 500px;
+      padding: 70px 24px 24px;
+    }
+    .content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ccc;
+      text-align: justify;
+    }
+    .content p:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+<h2 class="group-title">Equipa Docente</h2>
+
+<h3 class="subgroup-title">e-Tutores</h3>
+<div class="card-group">
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Hugo Mestre">
+    <div class="floating-name">Hugo Mestre</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>fasfamsfasofnmasofmsakpfmasdogkmasoagna. asfasognasogmasogamsgosamgosimgadosgmsaogmaomg.</p>
+  </div>
+</div>
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Diogo Cruz">
+    <div class="floating-name">Diogo Cruz</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>asfmpsafgmasdogklppsa,pgds,mgosmagosdmgosg. asfgmoasigmasoigmsaogmsgosmgosapmgopgmaosdgimsoigmoasigms.</p>
+  </div>
+</div>
+
+</div>
+
+<h3 class="subgroup-title">Orientadores</h3>
+<div class="card-group">
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Alan">
+    <div class="floating-name">Alan</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>afmoaslgmsadogmsapogm,dsgops,gopdsm,gsd</p>
+  </div>
+</div>
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Yoyo">
+    <div class="floating-name">Yoyo</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>safgasghadshdshdshdshdshds.</p>
+  </div>
+</div>
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Fafa">
+    <div class="floating-name">Fafa</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>agashdsahgsafdsahdsgsdh.</p>
+  </div>
+</div>
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Mekie?">
+    <div class="floating-name">Mekie?</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>agdashdshgsahsdgfs.</p>
+  </div>
+</div>
+<div class="card">
+  <div class="photo-container">
+    <img src="diogo.png" class="photo" alt="Diogo mekie?">
+    <div class="floating-name">Diogo mekie?</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▲</div>
+  </div>
+  <div class="content">
+    <p>asgmadogpmsfopgm,dspo,fsopags</p>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
