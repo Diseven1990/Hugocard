@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: transparent;
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+    .card {
+      width: 400px;
+      text-align: center;
+      position: relative;
+    }
+    .photo {
+      width: 100%;
+      display: block;
+      border-radius: 20px 20px 0 0;
+    }
+    .floating-name {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.65);
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      transition: transform 0.5s ease;
+      z-index: 3;
+      white-space: nowrap;
+    }
+    .card:hover .floating-name {
+      transform: translate(-50%, 118px);
+    }
+    .title-arrow {
+      background: #2a2a2a;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0;
+    }
+    .arrow {
+      background: #db423c;
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      transition: transform 0.4s ease;
+    }
+    .card:hover .arrow {
+      transform: rotate(180deg);
+    }
+    .content {
+      background: #2a2a2a;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      max-height: 0;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+      padding: 0 24px;
+    }
+    .card:hover .content {
+      max-height: 500px;
+      padding: 20px 24px 24px;
+    }
+    .content p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ccc;
+      text-align: justify;
+    }
+    .content p:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: diogo.jpg -->
+    <img src="diogo.jpg" class="photo" alt="Foto de e-Tutor Diogo Cruz">
+    <div class="floating-name">e-Tutor Diogo Cruz</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>Licenciado em Marketing e Publicidade.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: lucilia.jpg -->
+    <img src="lucilia.jpg" class="photo" alt="Foto de e-Tutora Lucília">
+    <div class="floating-name">e-Tutora Lucília</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>Licenciatura em Marketing e Publicidade</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: diana.jpg -->
+    <img src="diana.jpg" class="photo" alt="Foto de Diana Cordeiro">
+    <div class="floating-name">Diana Cordeiro</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>_</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: Lucia -->
+    <img src="Lucia" class="photo" alt="Foto de yo">
+    <div class="floating-name">yo</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>f</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: yo.jpg -->
+    <img src="yo.jpg" class="photo" alt="Foto de Yoyo">
+    <div class="floating-name">Yoyo</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>yo</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: aaaj.jpg -->
+    <img src="aaaj.jpg" class="photo" alt="Foto de Ana">
+    <div class="floating-name">Ana</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>_</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: fj.jpg -->
+    <img src="fj.jpg" class="photo" alt="Foto de Maria">
+    <div class="floating-name">Maria</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>:::</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: ff.jpg -->
+    <img src="ff.jpg" class="photo" alt="Foto de Ma">
+    <div class="floating-name">Ma</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>ff</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="photo-container">
+    <!-- Substitua esta imagem manualmente na pasta: ex: fff.png -->
+    <img src="fff.png" class="photo" alt="Foto de Luciaf">
+    <div class="floating-name">Luciaf</div>
+  </div>
+  <div class="title-arrow">
+    <div class="arrow">▼</div>
+  </div>
+  <div class="content">
+    <p>fff</p>
+  </div>
+</div>
+
+</body>
+</html>
