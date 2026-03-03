@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unidades do Curso</title>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:rgba(15,23,42,.12);
+  --accent:#334155;
+}
+
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.wrapper{
+  max-width:900px;
+  margin:0 auto;
+  padding:40px 20px 60px;
+}
+
+h1{
+  font-size:32px;
+  margin-bottom:35px;
+}
+
+.section{
+  margin-bottom:35px;
+}
+
+.section h2{
+  font-size:20px;
+  margin-bottom:15px;
+  border-left:4px solid var(--accent);
+  padding-left:10px;
+}
+
+.unit{
+  padding:10px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+.unit:hover{
+  border-color:var(--accent);
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+<h1>Unidades do Curso</h1>
+
+<div id="app"></div>
+</div>
+
+<script>
+const DATA = [
+  {
+    "titulo": "Módulo I – Teoria de Videojogos",
+    "unidades": [
+      "Unidade 1 – História dos Videojogos",
+      "Unidade 2 – Conceitos gerais",
+      "Unidade 3 – Física para videojogos",
+      "Unidade 4 – Teoria da Cor",
+      "Unidade 5 – Composição e Fotografia",
+      "Unidade 6 – Iluminação",
+      "Unidade 7 – Materiais"
+    ]
+  },
+  {
+    "titulo": "Módulo II – Concept Art",
+    "unidades": [
+      "Unidade 8 – Fundamentos do Desenho",
+      "Unidade 9 – Estética"
+    ]
+  },
+  {
+    "titulo": "Módulo III – Pixel Art",
+    "unidades": [
+      "Unidade 10 – Introdução aos pixeis",
+      "Unidade 11 – Introdução ao Aseprite",
+      "Unidade 14 – Criação de cenário de pixel art",
+      "Unidade 15 – Criação de personagem de pixel art",
+      "Unidade 16 – Introdução à animação",
+      "Unidade 17 – Animação de efeitos especiais"
+    ]
+  },
+  {
+    "titulo": "Módulo IV – Introdução Blender",
+    "unidades": [
+      "Unidade 18 – Introdução",
+      "Unidade 19 – Modelação Low Poly",
+      "Unidade 20 – Props e Cenários",
+      "Unidade 21 – Sculpting",
+      "Unidade 22 – Modelação orgânica",
+      "Unidade 23 – Retopologia",
+      "Unidade 24 – Modelação Personagem",
+      "Unidade 25 – Retopologia de personagem"
+    ]
+  },
+  {
+    "titulo": "Módulo V – Texturing",
+    "unidades": [
+      "Unidade 26 – UV Mapping",
+      "Unidade 27 – PBR",
+      "Unidade 28 – Vertex Paint",
+      "Unidade 29 – Texture painting",
+      "Unidade 30 – Iluminação e câmara",
+      "Unidade 31 – Sketchfab",
+      "Unidade 32 – Integração de assets em game engines"
+    ]
+  },
+  {
+    "titulo": "Módulo de desenvolvimento pessoal e profissional",
+    "unidades": [
+      "Unidade 1 – Comportamentos e atitudes",
+      "Unidade 2 – Técnicas de comunicação",
+      "Unidade 3 – Mercado laboral",
+      "Unidade 4 – Ferramentas para procura de emprego",
+      "Unidade 5 – Redes sociais",
+      "Unidade 6 – Empreendedorismo e marca pessoal",
+      "Unidade 7 – Estágio – Autogestão"
+    ]
+  }
+];
+const app = document.getElementById("app");
+
+DATA.forEach(mod => {
+  const section = document.createElement("div");
+  section.className = "section";
+  section.innerHTML = `<h2>${mod.titulo}</h2>`;
+
+  mod.unidades.forEach(u => {
+    const div = document.createElement("div");
+    div.className = "unit";
+    div.textContent = u;
+    section.appendChild(div);
+  });
+
+  app.appendChild(section);
+});
+</script>
+
+</body>
+</html>

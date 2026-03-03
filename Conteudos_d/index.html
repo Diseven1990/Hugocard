@@ -15,88 +15,45 @@
   --accent:#334155;
 }
 
-body{
-  margin:0;
-  font-family:Segoe UI, Arial, sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);}
 
-.wrapper{
-  max-width:900px; /* MAIS ESTREITO PARA CRM */
-  margin:0 auto;
-  padding:40px 20px 60px;
-}
+.wrapper{max-width:900px;margin:0 auto;padding:40px 20px 60px;}
 
-h1{
-  font-size:32px;
-  margin-bottom:30px;
-}
+h1{font-size:32px;margin-bottom:35px;}
 
-.section{
-  margin-bottom:35px;
-}
+.section{margin-bottom:35px;}
 
-.section h2{
-  font-size:20px;
-  margin-bottom:15px;
-  border-left:4px solid var(--accent);
-  padding-left:10px;
-}
+.section h2{font-size:20px;margin-bottom:15px;border-left:4px solid var(--accent);padding-left:10px;}
 
-.card{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px 16px;
-  margin-bottom:12px;
-  transition:.2s ease;
-}
+.card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:12px;transition:.2s ease;position:relative;}
 
-.card:hover{
-  border-color:var(--accent);
-}
+.card:hover{border-color:var(--accent);}
 
-.card-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  cursor:pointer;
-}
+.card:hover .details{display:block;}
 
-.card-title{
-  font-weight:600;
-}
+.card.open .details{display:block;}
 
-.details{
-  display:none;
-  margin-top:10px;
-  padding-top:10px;
-  border-top:1px solid var(--border);
-}
+.card-header{display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
 
-.details ul{
-  margin:0;
-  padding-left:18px;
-  color:var(--muted);
-}
+.card-title{font-weight:600;}
 
-.static{
-  cursor:default;
-}
+.details{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+
+.details ul{margin:0;padding-left:18px;color:var(--muted);}
+
+.static{cursor:default;}
 </style>
 </head>
 <body>
 
 <div class="wrapper">
 <h1>Conteúdos Programáticos</h1>
-
 <div id="app"></div>
 </div>
 
 <script>
 const DATA = [
   {
-    "key": "m1",
     "titulo": "Módulo I – Teoria de Videojogos",
     "unidades": [
       {
@@ -104,21 +61,21 @@ const DATA = [
         "nome": "História dos Videojogos",
         "topicos": [
           "A criação dos computadores",
-          "Os primeiros videojogos (1950-1972)",
-          "Tennis for Two",
-          "A segunda geração e o crash de 1982-1983",
-          "O renascimento – 8 bit"
+          "Primeiros videojogos",
+          "Crash de 1983",
+          "8 bit",
+          "16 bit"
         ]
       },
       {
         "n": 2,
         "nome": "Conceitos gerais",
         "topicos": [
-          "Hardware e componentes (CPU, GPU, RAM, ROM)",
+          "Hardware",
           "Periféricos",
-          "Software e elementos (pixel, resolução, polígono)",
-          "Game engine e software 3D",
-          "Render, animação e shader"
+          "Software",
+          "Game engine",
+          "Shader"
         ]
       },
       {
@@ -136,10 +93,10 @@ const DATA = [
         "nome": "Teoria da Cor",
         "topicos": [
           "RGB e CMYK",
-          "Matiz, saturação e luminosidade",
-          "Roda das cores e complementares",
+          "Matiz e saturação",
+          "Roda das cores",
           "Cores quentes e frias",
-          "A cor na prática"
+          "Aplicação prática"
         ]
       },
       {
@@ -150,16 +107,16 @@ const DATA = [
           "Equilíbrio visual",
           "Tempo de exposição",
           "Profundidade de campo",
-          "ISO e exposição"
+          "ISO"
         ]
       },
       {
         "n": 6,
         "nome": "Iluminação",
         "topicos": [
-          "Luz pré-calculada vs tempo real",
-          "Luz ambiente e direcional",
-          "Holofotes e luz de área",
+          "Luz pré-calculada",
+          "Luz em tempo real",
+          "Luz direcional",
           "Iluminação a três pontos",
           "Chiaroscuro"
         ]
@@ -168,17 +125,16 @@ const DATA = [
         "n": 7,
         "nome": "Materiais",
         "topicos": [
-          "Tipos de shaders",
+          "Shaders",
           "Node editors",
           "PBR",
-          "Normal e roughness map",
+          "Normal map",
           "Channel packing"
         ]
       }
     ]
   },
   {
-    "key": "m2",
     "titulo": "Módulo II – Concept Art",
     "unidades": [
       {
@@ -189,7 +145,7 @@ const DATA = [
           "Geometria",
           "Perspetiva",
           "Traço",
-          "Níveis de representação"
+          "Representação"
         ]
       },
       {
@@ -206,7 +162,6 @@ const DATA = [
     ]
   },
   {
-    "key": "m3",
     "titulo": "Módulo III – Pixel Art",
     "unidades": [
       {
@@ -226,15 +181,58 @@ const DATA = [
         "topicos": [
           "Interface",
           "Sprite editor",
-          "Layers e frames",
+          "Layers",
           "Onion skin",
           "Sprite sheets"
+        ]
+      },
+      {
+        "n": 14,
+        "nome": "Criação de cenário",
+        "topicos": [
+          "Tileset",
+          "Tiling",
+          "Background",
+          "Luz",
+          "Redimensionamento"
+        ]
+      },
+      {
+        "n": 15,
+        "nome": "Criação de personagem",
+        "topicos": [
+          "Resolução",
+          "Proporção",
+          "Retrato",
+          "Inimigos",
+          "Animação ataque"
+        ]
+      },
+      {
+        "n": 16,
+        "nome": "Introdução à animação",
+        "topicos": [
+          "12 princípios",
+          "Run cycle",
+          "Salto",
+          "Ataque espada",
+          "Timing"
+        ]
+      },
+      {
+        "n": 17,
+        "nome": "Efeitos especiais",
+        "topicos": [
+          "Bandeiras",
+          "Água",
+          "Fumo",
+          "Tiros",
+          "Explosões"
         ]
       }
     ]
   },
   {
-    "key": "m4",
     "titulo": "Módulo IV – Introdução Blender",
     "unidades": [
       {
@@ -244,7 +242,7 @@ const DATA = [
           "Interface",
           "Viewport",
           "Atalhos",
-          "Geometrias primitivas",
+          "Geometrias",
           "Materiais"
         ]
       },
@@ -252,17 +250,82 @@ const DATA = [
         "n": 19,
         "nome": "Modelação Low Poly",
         "topicos": [
-          "Edição de geometria",
+          "Edição",
           "Modifiers",
           "Pivot",
-          "Shade flat/smooth",
+          "Shade",
           "Clean up"
+        ]
+      },
+      {
+        "n": 20,
+        "nome": "Props e Cenários",
+        "topicos": [
+          "Referências",
+          "Modelação",
+          "Cenários",
+          "Props",
+          "Montagem"
+        ]
+      },
+      {
+        "n": 21,
+        "nome": "Sculpting",
+        "topicos": [
+          "Brushes",
+          "Mask",
+          "Simetria",
+          "Multiresolution",
+          "Remesh"
+        ]
+      },
+      {
+        "n": 22,
+        "nome": "Modelação orgânica",
+        "topicos": [
+          "Shapes",
+          "Referências",
+          "Proporções",
+          "Formas primárias",
+          "Correções"
+        ]
+      },
+      {
+        "n": 23,
+        "nome": "Retopologia",
+        "topicos": [
+          "Topologia",
+          "Snap",
+          "Poly build",
+          "Auto merge",
+          "Boas práticas"
+        ]
+      },
+      {
+        "n": 24,
+        "nome": "Modelação Personagem",
+        "topicos": [
+          "T-pose",
+          "Block out",
+          "Cabeça",
+          "Corpo",
+          "Acessórios"
+        ]
+      },
+      {
+        "n": 25,
+        "nome": "Retopologia personagem",
+        "topicos": [
+          "Clipping",
+          "Cabeça",
+          "Braços",
+          "Roupas",
+          "Armaduras"
         ]
       }
     ]
   },
   {
-    "key": "m5",
     "titulo": "Módulo V – Texturing",
     "unidades": [
       {
@@ -270,7 +333,7 @@ const DATA = [
         "nome": "UV Mapping",
         "topicos": [
           "Seams",
-          "Unwrapping",
+          "Unwrap",
           "Packaging",
           "Texel density",
           "UV automáticas"
@@ -286,11 +349,63 @@ const DATA = [
           "Roughness",
           "Bake"
         ]
+      },
+      {
+        "n": 28,
+        "nome": "Vertex Paint",
+        "topicos": [
+          "Preparação",
+          "Ferramentas",
+          "Color layers",
+          "Pintura cabeça",
+          "Bake"
+        ]
+      },
+      {
+        "n": 29,
+        "nome": "Texture painting",
+        "topicos": [
+          "Stencil",
+          "Texture slots",
+          "Guardar texturas",
+          "Workflow",
+          "Merge mapas"
+        ]
+      },
+      {
+        "n": 30,
+        "nome": "Iluminação e câmara",
+        "topicos": [
+          "Point light",
+          "Three point",
+          "HDRI",
+          "Render",
+          "Câmara"
+        ]
+      },
+      {
+        "n": 31,
+        "nome": "Sketchfab",
+        "topicos": [
+          "Exportação",
+          "Upload",
+          "Lighting",
+          "Annotations",
+          "Inspector"
+        ]
+      },
+      {
+        "n": 32,
+        "nome": "Integração em game engines",
+        "topicos": [
+          "Exportação",
+          "Texturas",
+          "Materiais"
+        ]
       }
     ]
   },
   {
-    "key": "m6",
     "titulo": "Módulo de desenvolvimento pessoal e profissional",
     "unidades": [
       {
@@ -324,7 +439,6 @@ const DATA = [
     ]
   }
 ];
-
 const app = document.getElementById("app");
 
 DATA.forEach(mod => {
@@ -335,11 +449,9 @@ DATA.forEach(mod => {
   mod.unidades.forEach(u => {
     const card = document.createElement("div");
     card.className = "card";
-
     const hasContent = u.topicos && u.topicos.length;
 
     if(hasContent){
-
       card.innerHTML = `
         <div class="card-header">
           <div class="card-title">Unidade ${u.n} – ${u.nome}</div>
@@ -352,13 +464,9 @@ DATA.forEach(mod => {
         </div>
       `;
 
-      const header = card.querySelector(".card-header");
-      const details = card.querySelector(".details");
-
-      header.addEventListener("click", () => {
-        details.style.display = details.style.display === "block" ? "none" : "block";
+      card.querySelector(".card-header").addEventListener("click", () => {
+        card.classList.toggle("open");
       });
-
     } else {
       card.classList.add("static");
       card.innerHTML = `<div class="card-title">Unidade ${u.n} – ${u.nome}</div>`;
