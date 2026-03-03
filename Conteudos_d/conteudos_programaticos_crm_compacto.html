@@ -1,0 +1,375 @@
+
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conteúdos Programáticos</title>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --border:rgba(15,23,42,.12);
+  --accent:#334155;
+}
+
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.wrapper{
+  max-width:900px; /* MAIS ESTREITO PARA CRM */
+  margin:0 auto;
+  padding:40px 20px 60px;
+}
+
+h1{
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+.section{
+  margin-bottom:35px;
+}
+
+.section h2{
+  font-size:20px;
+  margin-bottom:15px;
+  border-left:4px solid var(--accent);
+  padding-left:10px;
+}
+
+.card{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  margin-bottom:12px;
+  transition:.2s ease;
+}
+
+.card:hover{
+  border-color:var(--accent);
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+
+.card-title{
+  font-weight:600;
+}
+
+.details{
+  display:none;
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid var(--border);
+}
+
+.details ul{
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.static{
+  cursor:default;
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+<h1>Conteúdos Programáticos</h1>
+
+<div id="app"></div>
+</div>
+
+<script>
+const DATA = [
+  {
+    "key": "m1",
+    "titulo": "Módulo I – Teoria de Videojogos",
+    "unidades": [
+      {
+        "n": 1,
+        "nome": "História dos Videojogos",
+        "topicos": [
+          "A criação dos computadores",
+          "Os primeiros videojogos (1950-1972)",
+          "Tennis for Two",
+          "A segunda geração e o crash de 1982-1983",
+          "O renascimento – 8 bit"
+        ]
+      },
+      {
+        "n": 2,
+        "nome": "Conceitos gerais",
+        "topicos": [
+          "Hardware e componentes (CPU, GPU, RAM, ROM)",
+          "Periféricos",
+          "Software e elementos (pixel, resolução, polígono)",
+          "Game engine e software 3D",
+          "Render, animação e shader"
+        ]
+      },
+      {
+        "n": 3,
+        "nome": "Física para videojogos",
+        "topicos": [
+          "Sistemas de coordenadas",
+          "Vetores",
+          "Mecânica clássica",
+          "Cinemática"
+        ]
+      },
+      {
+        "n": 4,
+        "nome": "Teoria da Cor",
+        "topicos": [
+          "RGB e CMYK",
+          "Matiz, saturação e luminosidade",
+          "Roda das cores e complementares",
+          "Cores quentes e frias",
+          "A cor na prática"
+        ]
+      },
+      {
+        "n": 5,
+        "nome": "Composição e Fotografia",
+        "topicos": [
+          "Regra dos terços",
+          "Equilíbrio visual",
+          "Tempo de exposição",
+          "Profundidade de campo",
+          "ISO e exposição"
+        ]
+      },
+      {
+        "n": 6,
+        "nome": "Iluminação",
+        "topicos": [
+          "Luz pré-calculada vs tempo real",
+          "Luz ambiente e direcional",
+          "Holofotes e luz de área",
+          "Iluminação a três pontos",
+          "Chiaroscuro"
+        ]
+      },
+      {
+        "n": 7,
+        "nome": "Materiais",
+        "topicos": [
+          "Tipos de shaders",
+          "Node editors",
+          "PBR",
+          "Normal e roughness map",
+          "Channel packing"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "m2",
+    "titulo": "Módulo II – Concept Art",
+    "unidades": [
+      {
+        "n": 8,
+        "nome": "Fundamentos do Desenho",
+        "topicos": [
+          "Gestalt",
+          "Geometria",
+          "Perspetiva",
+          "Traço",
+          "Níveis de representação"
+        ]
+      },
+      {
+        "n": 9,
+        "nome": "Estética",
+        "topicos": [
+          "Renascimento",
+          "Arte moderna",
+          "Banda desenhada",
+          "Disney",
+          "Ilustração japonesa"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "m3",
+    "titulo": "Módulo III – Pixel Art",
+    "unidades": [
+      {
+        "n": 10,
+        "nome": "Introdução aos pixeis",
+        "topicos": [
+          "Line art",
+          "Index color",
+          "Dithering",
+          "Transform",
+          "Pattern"
+        ]
+      },
+      {
+        "n": 11,
+        "nome": "Introdução ao Aseprite",
+        "topicos": [
+          "Interface",
+          "Sprite editor",
+          "Layers e frames",
+          "Onion skin",
+          "Sprite sheets"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "m4",
+    "titulo": "Módulo IV – Introdução Blender",
+    "unidades": [
+      {
+        "n": 18,
+        "nome": "Introdução",
+        "topicos": [
+          "Interface",
+          "Viewport",
+          "Atalhos",
+          "Geometrias primitivas",
+          "Materiais"
+        ]
+      },
+      {
+        "n": 19,
+        "nome": "Modelação Low Poly",
+        "topicos": [
+          "Edição de geometria",
+          "Modifiers",
+          "Pivot",
+          "Shade flat/smooth",
+          "Clean up"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "m5",
+    "titulo": "Módulo V – Texturing",
+    "unidades": [
+      {
+        "n": 26,
+        "nome": "UV Mapping",
+        "topicos": [
+          "Seams",
+          "Unwrapping",
+          "Packaging",
+          "Texel density",
+          "UV automáticas"
+        ]
+      },
+      {
+        "n": 27,
+        "nome": "PBR",
+        "topicos": [
+          "Principled BSDF",
+          "Metallic workflow",
+          "Normal map",
+          "Roughness",
+          "Bake"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "m6",
+    "titulo": "Módulo de desenvolvimento pessoal e profissional",
+    "unidades": [
+      {
+        "n": 1,
+        "nome": "Comportamentos e atitudes"
+      },
+      {
+        "n": 2,
+        "nome": "Técnicas de comunicação"
+      },
+      {
+        "n": 3,
+        "nome": "Mercado laboral"
+      },
+      {
+        "n": 4,
+        "nome": "Ferramentas para procura de emprego"
+      },
+      {
+        "n": 5,
+        "nome": "Redes sociais"
+      },
+      {
+        "n": 6,
+        "nome": "Empreendedorismo e marca pessoal"
+      },
+      {
+        "n": 7,
+        "nome": "Estágio – Autogestão"
+      }
+    ]
+  }
+];
+
+const app = document.getElementById("app");
+
+DATA.forEach(mod => {
+  const section = document.createElement("div");
+  section.className = "section";
+  section.innerHTML = `<h2>${mod.titulo}</h2>`;
+
+  mod.unidades.forEach(u => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const hasContent = u.topicos && u.topicos.length;
+
+    if(hasContent){
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="card-title">Unidade ${u.n} – ${u.nome}</div>
+          <div>▾</div>
+        </div>
+        <div class="details">
+          <ul>
+            ${u.topicos.map(t => `<li>${t}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+
+      const header = card.querySelector(".card-header");
+      const details = card.querySelector(".details");
+
+      header.addEventListener("click", () => {
+        details.style.display = details.style.display === "block" ? "none" : "block";
+      });
+
+    } else {
+      card.classList.add("static");
+      card.innerHTML = `<div class="card-title">Unidade ${u.n} – ${u.nome}</div>`;
+    }
+
+    section.appendChild(card);
+  });
+
+  app.appendChild(section);
+});
+</script>
+
+</body>
+</html>
