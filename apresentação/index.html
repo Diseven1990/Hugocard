@@ -6,6 +6,7 @@
 <title>Apresentação - Arte Digital</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -48,29 +49,165 @@ text-decoration:none;
 a:hover{
 text-decoration:underline;
 }
+
+
+
+/* Interação "estilo Mario": bloco ? (preto e branco) com relevo e animação */
+.coinWrap{
+display:inline-block;
+display:inline-block;
+align-items:center;
+position:relative;
+}
+
+.coin{
+width:22px;
+height:22px;
+margin-left:8px;
+border:none;
+padding:0;
+cursor:pointer;
+background:transparent;
+appearance:none;
+-webkit-appearance:none;
+position:relative;
+display:inline-block;
+}
+
+/* Bloco em preto e branco com relevo */
+.coin::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:4px;
+background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 55%, #8e8e8e 100%);
+box-shadow:
+inset 0 2px 0 rgba(255,255,255,.85),
+inset 0 -3px 0 rgba(0,0,0,.28),
+0 2px 0 rgba(0,0,0,.28);
+border:2px solid rgba(0,0,0,.55);
+image-rendering: pixelated;
+}
+
+/* ? a preto e branco */
+.coin::after{
+content:"?";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-56%);
+font-family:"Press Start 2P", monospace;
+font-size:12px;
+color:#000;
+text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff;
+}
+
+.coin{
+animation: marioBob 1.8s ease-in-out infinite; /* mais lento */
+}
+
+@keyframes marioBob{
+0%{ transform: translateY(0); }
+50%{ transform: translateY(-6px); }
+100%{ transform: translateY(0); }
+}
+
+/* Bounce ao clicar (tipo Mario) */
+@keyframes marioHit{
+0%{transform:translateY(0)}
+40%{transform:translateY(-10px)}
+70%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
+.coin.hit{
+animation:marioHit 0.35s ease;
+}
+
+/* Balão de fala */
+.tip{
+display:none;
+position:absolute;
+top:32px;
+left:50%;
+transform:translateX(-50%);
+z-index:999;
+background:#ffffff;
+border:2px solid rgba(0,0,0,0.35);
+border-radius:10px;
+padding:14px;
+width:min(360px, 82vw);
+box-shadow:0 10px 24px rgba(0,0,0,0.15);
+font-family:"Press Start 2P", monospace;   /* lettering todo estilo videojogo */
+font-size:11px;
+line-height:1.7;
+text-align:justify;
+font-weight:normal;
+}
+
+.tip strong{
+display:block;
+margin-bottom:10px;
+font-weight:700;
+text-align:center;
+}
+
+/* “bico” alinhado ao bloco */
+.tip::before{
+content:"";
+position:absolute;
+top:-10px;
+left:50%;
+transform:translateX(-50%);
+border-left:10px solid transparent;
+border-right:10px solid transparent;
+border-bottom:10px solid rgba(0,0,0,0.35);
+}
+.tip::after{
+content:"";
+position:absolute;
+top:-8px;
+left:50%;
+transform:translateX(-50%);
+border-left:9px solid transparent;
+border-right:9px solid transparent;
+border-bottom:9px solid #ffffff;
+}
+
+.coinWrap.open .tip{ display:block; }
+
 </style>
 </head>
 
 <body>
 
-<p>O curso de <strong>Arte Digital</strong> especializa-se na criação de conteúdos visuais 2D e 3D para videojogos, preparando o formando para adquirir competências artísticas e técnicas para atuar como <strong>Digital </strong><strong>Artist</strong>.</p>
+<p>O curso de <strong>Arte Digital</strong> especializa-se na criação de conteúdos visuais 2D e 3D para videojogos, preparando o formando para adquirir competências artísticas e técnicas para atuar como <span class="coinWrap"><strong>Digital Artist</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Digital Artist</strong>Profissional que cria conteúdos visuais digitais (2D/3D), como personagens, cenários, objetos e animações, para projetos interativos como videojogos.</span></span>.</p>
 <figure style="text-align:center; margin:25px 0;">
     <img src="imagens/image1.jpg" style="max-width:500px; width:100%; height:auto;">
     <figcaption style="font-size:14px; color:#555; margin-top:6px; font-style:italic;">
-        Cartaz da MasterJam realizado pelo artista e e-Tutor Hugo Mestre.
+        
+<span class="coinWrap">
+<span>Cartaz da Master Jam</span>
+<button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button>
+
+<span class="tip">
+<strong>Master Jam</strong><br>
+Sessão prática ou evento criativo onde os formandos desenvolvem projetos, aplicam competências técnicas e partilham resultados com acompanhamento de especialistas.
+</span></span>
+realizado pelo artista e <b>e-Tutor Hugo Mestre</b>.
+
     </figcaption>
 </figure>
-<p>A indústria dos videojogos é atualmente uma das áreas de entretenimento que mais cresce no mundo, <strong>gerando milhares de milhões de euros e superando a música e o cinema combinados</strong>. Trata-se de um setor exigente, que procura profissionais qualificados e especializados nas diferentes áreas do desenvolvimento.</p><p>Ao longo da formação, aprenderá as bases do <strong>desenho e da animação, aprofundando técnicas de modelação, escultura e texturização de </strong><strong>assets</strong> para videojogos. A criação de personagens, cenários e elementos animados exige conceptualização, estudo prévio e adaptação técnica, competências que serão trabalhadas de forma estruturada.</p><p>Na vertente 2D, o curso foca-se na criação de arte digital e animação com <strong>Photoshop</strong> e <strong>Aseprite</strong>, duas das ferramentas mais utilizadas, sobretudo em pixel art. Irá desenvolver capacidades de desenho, conceptualização e adaptação de estilos, preparando os seus trabalhos para integração em videojogos.</p><div style="text-align:center; margin:30px 0;">
+<p>A indústria dos videojogos é atualmente uma das áreas de entretenimento que mais cresce no mundo, <strong>gerando milhares de milhões de euros e superando a música e o cinema combinados</strong>. Trata-se de um setor exigente, que procura profissionais qualificados e especializados nas diferentes áreas do desenvolvimento.</p><p>Ao longo da formação, aprenderá as bases do <strong>desenho e da animação, aprofundando técnicas de modelação, escultura e texturização de </strong><span class="coinWrap"><strong>assets</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Assets</strong>Elementos criados para o jogo (ex.: modelos 3D, texturas, sprites, UI, efeitos, sons) prontos a integrar no projeto.</span></span> para videojogos. A criação de personagens, cenários e elementos animados exige conceptualização, estudo prévio e adaptação técnica, competências que serão trabalhadas de forma estruturada.</p><p>Na vertente 2D, o curso foca-se na criação de arte digital e animação com <strong>Photoshop</strong> e <strong>Aseprite</strong>, duas das ferramentas mais utilizadas, sobretudo em pixel art. Irá desenvolver capacidades de desenho, conceptualização e adaptação de estilos, preparando os seus trabalhos para integração em videojogos.</p><div style="text-align:center; margin:30px 0;">
 <div style="text-align:center; margin:30px 0;">
     <video controls style="max-width:360px; width:100%; height:auto;">
         <source src="videos/video1.mp4" type="video/mp4">
         O seu navegador não suporta vídeo HTML5.
     </video>
  <figcaption style="font-size:14px; color:#555; margin-top:6px; font-style:italic;">
-        Vídeo promocional para a Master Jam 5 realizado pelo artista e e-Tutor Hugo Mestre.
+        Vídeo promocional para a Master Jam 5 realizado pelo artista e <b>e-Tutor Hugo Mestre</b>.
     </figcaption>
 </div>
-</div></p><p>Na vertente 3D, aprenderá a utilizar o <strong>Blender</strong>, software amplamente utilizado na indústria, realizando modelação de personagens, cenários e outros assets. Desenvolverá fundamentos de desenho aplicados à modelação e aprenderá a adaptar modelos em versões low poly para videojogos AAA ou mobile.</p><p><div style="text-align:center; margin:30px 0;">
+</div></p><p>Na vertente 3D, aprenderá a utilizar o <strong>Blender</strong>, software amplamente utilizado na indústria, realizando modelação de personagens, cenários e outros assets. Desenvolverá fundamentos de desenho aplicados à modelação e aprenderá a adaptar modelos  para <span class="coinWrap"><strong>videojogos AAA</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Videojogos AAA</strong><img src="imagens/aaa_ref.png" alt="Exemplo AAA" style="display:block; max-width:140px; width:100%; height:auto; margin:10px auto 12px; border-radius:8px; border:1px solid rgba(0,0,0,0.15);">Jogos de grande orçamento e produção (equipas grandes, alto nível técnico e visual), normalmente lançados por grandes estúdios.</span></span> ou mobile.</p><p><div style="text-align:center; margin:30px 0;">
 </div></p><p>O curso inclui ainda sessões práticas nos centros formativos, onde poderá aplicar os conhecimentos adquiridos com acompanhamento especializado.</p>
   <div style="text-align:center; margin:30px 0;">
     <video controls style="max-width:360px; width:100%; height:auto;">
@@ -78,10 +215,36 @@ text-decoration:underline;
         O seu navegador não suporta vídeo HTML5.
     </video>
  <figcaption style="font-size:14px; color:#555; margin-top:6px; font-style:italic;">
-       Vídeo promocional para a Master Jam 7 realizado pelo artista e e-Tutor Hugo Mestre.
+       Vídeo promocional para a Master Jam 7 realizado pelo artista e <b>e-Tutor Hugo Mestre</b>.
     </figcaption>
 </div>
 <p>Na Master.D, terá acesso a manuais atualizados, recursos didáticos estruturados, webinars, masterclasses e workshops, reforçando a aprendizagem e aproximando-o da realidade do mercado.</p><p>Esta formação é indicada para quem pretende desenvolver competências técnicas sólidas e preparar-se para integrar a indústria dos videojogos com bases consistentes.</p>
+
+
+<script>
+document.querySelectorAll('.coinWrap').forEach(wrap=>{
+  const coin = wrap.querySelector('.coin');
+
+  wrap.addEventListener('click', (e)=>e.stopPropagation());
+
+  coin.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    coin.classList.remove('hit');
+    void coin.offsetWidth;
+    coin.classList.add('hit');
+    wrap.classList.toggle('open');
+    coin.setAttribute('aria-expanded', wrap.classList.contains('open') ? 'true' : 'false');
+  });
+});
+
+document.addEventListener('click', ()=>{
+  document.querySelectorAll('.coinWrap').forEach(w=>{
+    w.classList.remove('open');
+    const c = w.querySelector('.coin');
+    if(c) c.setAttribute('aria-expanded','false');
+  });
+});
+</script>
 
 </body>
 </html>
