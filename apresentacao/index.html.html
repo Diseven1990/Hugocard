@@ -54,8 +54,7 @@ text-decoration:underline;
 
 /* Interação "estilo Mario": bloco ? (preto e branco) com relevo e animação */
 .coinWrap{
-display:inline-block;
-display:inline-block;
+display:inline-flex;
 align-items:center;
 position:relative;
 }
@@ -128,7 +127,7 @@ animation:marioHit 0.35s ease;
 display:none;
 position:absolute;
 top:32px;
-Left:0;
+left:50%;
 transform:translateX(-50%);
 z-index:999;
 background:#ffffff;
@@ -136,6 +135,7 @@ border:2px solid rgba(0,0,0,0.35);
 border-radius:10px;
 padding:14px;
 width:min(360px, 82vw);
+max-width:min(360px, 82vw);
 box-shadow:0 10px 24px rgba(0,0,0,0.15);
 font-family:"Press Start 2P", monospace;   /* lettering todo estilo videojogo */
 font-size:11px;
@@ -171,6 +171,19 @@ transform:translateX(-50%);
 border-left:9px solid transparent;
 border-right:9px solid transparent;
 border-bottom:9px solid #ffffff;
+}
+
+/* Quando não cabe (ex.: CRM/iframe), abrir para o lado oposto */
+.coinWrap.flip .tip{
+left:auto;
+right:50%;
+transform:translateX(50%);
+}
+
+.coinWrap.flip .tip::before,
+.coinWrap.flip .tip::after{
+left:50%;
+transform:translateX(-50%);
 }
 
 .coinWrap.open .tip{ display:block; }
@@ -222,28 +235,69 @@ realizado pelo artista e <b>e-Tutor Hugo Mestre</b>.
 
 
 <script>
+function closeAllTips(){
+  document.querySelectorAll('.coinWrap').forEach(w=>{
+    w.classList.remove('open','flip');
+    const c = w.querySelector('.coin');
+    if(c) c.setAttribute('aria-expanded','false');
+    const t = w.querySelector('.tip');
+    if(t){ t.style.left=''; t.style.transform=''; }
+  });
+}
+
 document.querySelectorAll('.coinWrap').forEach(wrap=>{
   const coin = wrap.querySelector('.coin');
+  const tip  = wrap.querySelector('.tip');
 
   wrap.addEventListener('click', (e)=>e.stopPropagation());
+  if(tip) tip.addEventListener('click', (e)=>e.stopPropagation());
 
   coin.addEventListener('click', (e)=>{
     e.stopPropagation();
+
+    // bounce
     coin.classList.remove('hit');
     void coin.offsetWidth;
     coin.classList.add('hit');
-    wrap.classList.toggle('open');
-    coin.setAttribute('aria-expanded', wrap.classList.contains('open') ? 'true' : 'false');
+
+    const willOpen = !wrap.classList.contains('open');
+    closeAllTips();
+    if(!willOpen) return;
+
+    wrap.classList.add('open');
+    coin.setAttribute('aria-expanded','true');
+
+    if(!tip) return;
+    wrap.classList.remove('flip');
+
+    requestAnimationFrame(()=>{
+      const r = tip.getBoundingClientRect();
+      if(r.right > window.innerWidth - 8){
+        wrap.classList.add('flip');
+      }
+
+      requestAnimationFrame(()=>{
+        const r2 = tip.getBoundingClientRect();
+        const overLeft = 8 - r2.left;
+        const overRight = r2.right - (window.innerWidth - 8);
+
+        if(overLeft > 0){
+          tip.style.left = '50%';
+          tip.style.transform = 'translateX(calc(-50% + ' + overLeft + 'px))';
+        } else if(overRight > 0){
+          tip.style.left = '50%';
+          tip.style.transform = 'translateX(calc(-50% - ' + overRight + 'px))';
+        } else {
+          tip.style.left = '';
+          tip.style.transform = '';
+        }
+      });
+    });
   });
 });
 
-document.addEventListener('click', ()=>{
-  document.querySelectorAll('.coinWrap').forEach(w=>{
-    w.classList.remove('open');
-    const c = w.querySelector('.coin');
-    if(c) c.setAttribute('aria-expanded','false');
-  });
-});
+document.addEventListener('click', closeAllTips);
+window.addEventListener('resize', closeAllTips);
 </script>
 
 </body>
