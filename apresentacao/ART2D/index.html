@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arte e Desenvolvimento de Videojogos 2D</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+body{font-family:"Open Sans",sans-serif;font-size:16px;line-height:1.7;max-width:900px;margin:40px auto;padding:20px;color:#222;}
+p{text-align:justify;margin-bottom:18px;}
+strong{font-weight:700;}
+.coinWrap{display:inline-flex;align-items:center;position:relative;}
+.coin{width:22px;height:22px;margin-left:8px;border:none;padding:0;cursor:pointer;background:transparent;appearance:none;-webkit-appearance:none;position:relative;display:inline-block;}
+.coin::before{content:"";position:absolute;inset:0;border-radius:4px;background:linear-gradient(180deg,#ffffff 0%,#dcdcdc 55%,#8e8e8e 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.85), inset 0 -3px 0 rgba(0,0,0,.28), 0 2px 0 rgba(0,0,0,.28);border:2px solid rgba(0,0,0,.55);}
+.coin::after{content:"?";position:absolute;left:50%;top:50%;transform:translate(-50%,-56%);font-family:"Press Start 2P", monospace;font-size:12px;color:#000;text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff;}
+.coin{animation:marioBob 1.8s ease-in-out infinite;}
+@keyframes marioBob{0%{transform:translateY(0);}50%{transform:translateY(-6px);}100%{transform:translateY(0);}}
+@keyframes marioHit{0%{transform:translateY(0)}40%{transform:translateY(-10px)}70%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+.coin.hit{animation:marioHit .35s ease;}
+.tip{display:none;position:absolute;top:32px;left:50%;transform:translateX(-50%);z-index:999;background:#fff;border:2px solid rgba(0,0,0,.35);border-radius:10px;padding:14px;width:min(360px,82vw);max-width:min(360px,82vw);box-shadow:0 10px 24px rgba(0,0,0,.15);font-family:"Press Start 2P", monospace;font-size:11px;line-height:1.7;text-align:justify;font-weight:400;}
+.tip strong{display:block;margin-bottom:10px;font-weight:700;text-align:center;}
+.tip::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid rgba(0,0,0,.35);}
+.tip::after{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:9px solid #fff;}
+.coinWrap.flip .tip{left:auto;right:50%;transform:translateX(50%);}
+.coinWrap.flip .tip::before,.coinWrap.flip .tip::after{left:50%;transform:translateX(-50%);}
+.coinWrap.open .tip{display:block;}
+</style>
+</head>
+<body>
+<p>O curso de <strong>Arte e Desenvolvimento de Videojogos 2D</strong> foi concebido para quem deseja entrar no universo criativo dos videojogos, combinando competências artísticas e técnicas para criar experiências interativas completas. Ao longo da formação, irá aprender a desenvolver conteúdos visuais 2D para videojogos e a programar a sua interatividade, criando cenários, personagens e mecânicas que dão vida a um jogo.</p>
+<p>Trata-se de um curso completo que integra duas áreas fundamentais do desenvolvimento de videojogos: a criação artística e a programação. Está direcionado para quem pretende adquirir competências sólidas e dar os primeiros passos na carreira de <span class="coinWrap"><strong>Game Developer</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Game Developer</strong>Profissional que participa no desenvolvimento de videojogos, podendo atuar em áreas como programação, design, mecânicas, sistemas e produção.</span></span>.</p>
+<p style="text-align: center;"><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" scrolling="no" src="https://www.youtube.com/embed/59iO4cTxnrY" width="560"></iframe></p>
+
+<p>Os videojogos e a arte digital são atualmente uma das maiores indústrias de entretenimento do mundo, gerando milhares de milhões de euros por ano e ultrapassando as receitas combinadas da música e do cinema. Este crescimento constante faz com que o setor procure cada vez mais profissionais qualificados e especializados nas diferentes áreas do desenvolvimento.</p>
+<p>Com esta formação, além de aprender as bases e fundamentos do desenho e da animação, irá desenvolver competências essenciais para criar conteúdos visuais utilizados em videojogos, explorando técnicas de modelação, escultura e texturização de <span class="coinWrap"><strong>assets</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Assets</strong>Elementos criados para o jogo, como personagens, cenários, objetos, texturas, menus, efeitos visuais ou sons, prontos a integrar no projeto.</span></span>. A componente visual é fundamental em qualquer videojogo, sendo responsável por criar personagens, cenários e elementos animados que dão identidade e personalidade ao jogo.</p>
+<p>Na primeira parte do curso irá focar-se na criação de arte digital e animação 2D, utilizando Photoshop e Aseprite, duas das ferramentas mais utilizadas na indústria, especialmente na criação de <span class="coinWrap"><strong>pixel art</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Pixel Art</strong>Estilo visual construído a partir de píxeis visíveis, muito usado em videojogos 2D com estética retro ou nostálgica.</span></span>. Ao longo deste processo, desenvolverá a capacidade de desenhar, conceptualizar ideias e adaptar o seu estilo artístico para videojogos.</p>
+<p>A segunda parte da formação centra-se nas técnicas de desenvolvimento de videojogos em duas dimensões, com especial foco no mercado <span class="coinWrap"><strong>indie</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Indie</strong>Termo usado para jogos ou estúdios independentes, normalmente com equipas menores, maior liberdade criativa e produções fora das grandes editoras.</span></span> e nos jogos casuais, áreas que continuam a crescer e a oferecer novas oportunidades criativas. Para isso, irá trabalhar com <span class="coinWrap"><strong>Unity</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Unity</strong>Motor de jogo amplamente utilizado para criar videojogos 2D e 3D, permitindo desenvolver mecânicas, sistemas, interfaces e interatividade.</span></span>, um dos <span class="coinWrap"><strong>motores de jogo</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Motor de Jogo</strong>Software base usado para construir videojogos, reunindo ferramentas para programação, física, animação, interface e exportação do projeto.</span></span> mais conhecidos e versáteis da atualidade.</p>
+
+<p style="text-align: center;"><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" scrolling="no" src="https://www.youtube.com/embed/RXU2Ui0-31U" width="560"></iframe></p>
+
+<p>Jogos como <strong>Hearthstone, Monument Valley, Ori and the Blind Forest, Super Mario Run</strong> ou <strong>Pokémon Mystery Dungeon: Rescue Team DX</strong> demonstram como o Unity é utilizado em projetos de grande sucesso, mesmo em estúdios que possuem motores próprios desenvolvidos internamente.</p>
+<p>Durante o curso, aprenderá a transformar ideias em projetos jogáveis, desde a conceptualização inicial até à integração final dos elementos visuais no jogo. Esta abordagem permite desenvolver uma visão completa do processo de criação de um videojogo.</p>
+<p>Esta formação reúne competências associadas ao trabalho de artista, designer e programador, preparando-o para integrar equipas de desenvolvimento ou para criar os seus próprios projetos no mercado independente.</p>
+<p>No final da formação, desenvolverá um <span class="coinWrap"><strong>projeto final</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Projeto Final</strong>Trabalho prático desenvolvido no final do curso para consolidar os conhecimentos adquiridos e demonstrar as competências desenvolvidas ao longo da formação.</span></span> de videojogo 2D, onde poderá aplicar todos os conhecimentos adquiridos e demonstrar a sua criatividade, criando um jogo com total liberdade criativa.</p>
+<p>Após concluir o curso, estará preparado para participar em projetos de desenvolvimento de videojogos, colaborar com equipas multidisciplinares ou explorar ideias próprias no mercado indie, um dos segmentos mais dinâmicos da indústria.</p>
+<p>Ao longo da formação terá ainda a oportunidade de participar em sessões práticas nos centros formativos, onde poderá aplicar os conhecimentos adquiridos com acompanhamento especializado.</p>
+<p>Na Master.D, além de manuais e recursos didáticos atualizados, terá acesso a um conjunto de ferramentas que enriquecem a sua aprendizagem, como webinars, masterclasses e workshops, permitindo aproximar-se da realidade da indústria e desenvolver competências práticas valorizadas no mercado.</p>
+<script>
+function closeAllTips(){document.querySelectorAll('.coinWrap').forEach(w=>{w.classList.remove('open','flip');const c=w.querySelector('.coin');if(c)c.setAttribute('aria-expanded','false');const t=w.querySelector('.tip');if(t){t.style.left='';t.style.transform='';}});}
+document.querySelectorAll('.coinWrap').forEach(wrap=>{const coin=wrap.querySelector('.coin');const tip=wrap.querySelector('.tip');wrap.addEventListener('click',(e)=>e.stopPropagation());if(tip)tip.addEventListener('click',(e)=>e.stopPropagation());coin.addEventListener('click',(e)=>{e.stopPropagation();coin.classList.remove('hit');void coin.offsetWidth;coin.classList.add('hit');const willOpen=!wrap.classList.contains('open');closeAllTips();if(!willOpen)return;wrap.classList.add('open');coin.setAttribute('aria-expanded','true');if(!tip)return;wrap.classList.remove('flip');requestAnimationFrame(()=>{const r=tip.getBoundingClientRect();if(r.right>window.innerWidth-8){wrap.classList.add('flip');}requestAnimationFrame(()=>{const r2=tip.getBoundingClientRect();const overLeft=8-r2.left;const overRight=r2.right-(window.innerWidth-8);if(overLeft>0){tip.style.left='50%';tip.style.transform='translateX(calc(-50% + '+overLeft+'px))';}else if(overRight>0){tip.style.left='50%';tip.style.transform='translateX(calc(-50% - '+overRight+'px))';}else{tip.style.left='';tip.style.transform='';}});});});});
+document.addEventListener('click',closeAllTips);window.addEventListener('resize',closeAllTips);
+</script>
+</body>
+</html>
