@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apresentação - Modelação, Animação 3D e Rigging para Videojogos</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+body{font-family:"Open Sans",sans-serif;font-size:16px;line-height:1.7;max-width:900px;margin:40px auto;padding:20px;color:#222}
+p{text-align:justify;margin-bottom:18px}
+figure{margin:30px 0;text-align:center}
+figure img{max-width:100%;height:auto}
+figcaption{font-size:14px;color:#555;margin-top:8px;font-style:italic}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.coinWrap{display:inline-flex;align-items:center;position:relative}
+.coin{width:22px;height:22px;margin-left:8px;border:none;padding:0;cursor:pointer;background:transparent;appearance:none;-webkit-appearance:none;position:relative;display:inline-block;animation:marioBob 1.8s ease-in-out infinite}
+.coin::before{content:"";position:absolute;inset:0;border-radius:4px;background:linear-gradient(180deg,#fff 0%,#dcdcdc 55%,#8e8e8e 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.85), inset 0 -3px 0 rgba(0,0,0,.28), 0 2px 0 rgba(0,0,0,.28);border:2px solid rgba(0,0,0,.55);image-rendering:pixelated}
+.coin::after{content:"?";position:absolute;left:50%;top:50%;transform:translate(-50%,-56%);font-family:"Press Start 2P",monospace;font-size:12px;color:#000;text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff}
+@keyframes marioBob{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+@keyframes marioHit{0%{transform:translateY(0)}40%{transform:translateY(-10px)}70%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+.coin.hit{animation:marioHit .35s ease}
+.tip{display:none;position:absolute;top:32px;left:50%;transform:translateX(-50%);z-index:999;background:#fff;border:2px solid rgba(0,0,0,.35);border-radius:10px;padding:14px;width:min(360px,82vw);max-width:min(360px,82vw);box-shadow:0 10px 24px rgba(0,0,0,.15);font-family:"Press Start 2P",monospace;font-size:11px;line-height:1.7;text-align:justify;font-weight:normal}
+.tip strong{display:block;margin-bottom:10px;font-weight:700;text-align:center}
+.tip::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid rgba(0,0,0,.35)}
+.tip::after{content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:9px solid #fff}
+.coinWrap.flip .tip{left:auto;right:50%;transform:translateX(50%)}
+.coinWrap.flip .tip::before,.coinWrap.flip .tip::after{left:50%;transform:translateX(-50%)}
+.coinWrap.above .tip{top:auto;bottom:32px}
+.coinWrap.above .tip::before{top:auto;bottom:-10px;border-bottom:none;border-top:10px solid rgba(0,0,0,.35)}
+.coinWrap.above .tip::after{top:auto;bottom:-8px;border-bottom:none;border-top:9px solid #fff}
+.coinWrap.open .tip{display:block}
+</style>
+</head>
+<body>
+
+<p>O curso <strong>Avançado em Modelação, Animação 3D e Rigging para Videojogos</strong> é especializado na criação integral de <span class="coinWrap"><strong>assets 3D</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Assets 3D</strong>Elementos tridimensionais utilizados num videojogo, como personagens, cenários, objetos ou efeitos visuais prontos para integração num motor de jogo.</span></span> para videojogos. Destina-se a quem pretende adquirir competências técnicas e artísticas em <strong>modelação 3D, animação 3D e rigging para videojogos</strong>, bem como para outros <span class="coinWrap"><strong>ambientes interativos</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Ambientes Interativos</strong>Aplicações digitais onde o utilizador pode interagir com o conteúdo, como videojogos, experiências 3D ou aplicações em tempo real.</span></span> e outros media, como séries ou cinema de animação 3D.</p>
+
+<figure style="text-align:center;">
+<img src="imagens/4.png" style="max-width:700px; width:100%; height:auto;">
+</figure>
+
+<p>Os videojogos e a arte digital são uma das principais formas de entretenimento no mercado atual. A <strong>indústria dos videojogos</strong> encontra-se num período de crescimento exponencial, gerando milhares de milhões de euros anualmente e ultrapassando, em valor, a indústria da música e do cinema combinadas.</p>
+
+<p>Esta formação engloba desenho, <span class="coinWrap"><strong>concept art</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Concept Art</strong>Criação visual que define o estilo, a aparência e a atmosfera de personagens, cenários ou objetos antes da sua produção final.</span></span>, prototipagem, <span class="coinWrap"><strong>modelação hard surface</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Modelação Hard Surface</strong>Tipo de modelação 3D utilizada para criar objetos rígidos e mecânicos, como veículos, armas, robôs ou elementos arquitetónicos.</span></span>, <span class="coinWrap"><strong>modelação orgânica</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Modelação Orgânica</strong>Tipo de modelação 3D utilizada para criar formas naturais, como personagens, criaturas ou elementos biológicos.</span></span>, texturização, <span class="coinWrap"><strong>shaders</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Shaders</strong>Programas que definem como a superfície de um objeto reage à luz, cor e outros efeitos visuais num ambiente 3D.</span></span>, <span class="coinWrap"><strong>rigging</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Rigging</strong>Processo de criação de uma estrutura interna de ossos e controlos que permite mover e animar personagens ou objetos 3D.</span></span>, <span class="coinWrap"><strong>skinning</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Skinning</strong>Processo que liga a malha 3D ao rig, permitindo que o modelo se mova corretamente durante a animação.</span></span>, animação 2D, princípios de animação, storyboard e <strong>animação 3D</strong>. Ao longo do curso poderá criar um cenário completo e uma personagem do início ao fim, dando-lhes vida com animações apelativas.</p>
+
+
+
+<p>Um asset de um videojogo pode ser um cenário ou uma personagem animada. Trata-se da matéria-prima visual de um videojogo, exigindo estudo prévio, conceito e idealização. Antes de criar um cenário, terá de realizar o seu estudo através de concept art e de outros tipos de prototipagem, fundamentais no processo de <strong>criação de assets para videojogos</strong>.</p>
+
+<figure style="text-align:center;">
+<img src="imagens/3.jpg" style="max-width:700px; width:100%; height:auto;">
+</figure>
+
+<p>Para uma personagem se poder mover, necessita de uma estrutura interna que lhe permita ter o controlo necessário para criar animações apelativas. Após aprender as técnicas de rigging e skinning, poderá mover objetos, animar personagens e otimizar a sua apresentação em <strong>videojogos e outros ambientes interativos</strong>.</p>
+
+<p>O curso foca-se na criação de assets animados com <span class="coinWrap"><strong>Blender</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Blender</strong>Software gratuito e open-source utilizado para modelação 3D, animação 3D, rigging, simulação, texturização e renderização, amplamente utilizado na indústria dos videojogos e da animação digital.</span></span>, um dos softwares mais populares, completos e cada vez mais utilizados na <strong>indústria dos videojogos</strong> e da animação digital.</p>
+
+<figure style="text-align:center;">
+<img src="imagens/blender.png" style="max-width:500px; width:100%; height:auto;">
+</figure>
+
+<p>Irá aprender a desenhar digitalmente, a criar protótipos, a estudar e observar imagens de referência, a conceptualizar as suas ideias e a apresentar o seu trabalho de forma clara, estruturada e profissional.</p>
+
+<p>Esta formação engloba o trabalho de um <span class="coinWrap"><strong>3D Artist</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>3D Artist</strong>Profissional responsável pela criação de modelos tridimensionais, personagens, cenários e objetos para videojogos, animação ou outras aplicações digitais.</span></span> e de um <span class="coinWrap"><strong>Technical Artist</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Technical Artist</strong>Profissional que faz a ligação entre arte e programação, garantindo que os assets funcionam corretamente dentro do motor de jogo.</span></span> na indústria de videojogos e será uma ferramenta essencial para entrar, evoluir e permanecer nesta área.</p>
+
+<p><b>Na Master.D</b>, além de manuais e <b>recursos didáticos atualizados</b>, terá acesso a um <b>conjunto de ferramentas</b> que enriquecem a sua aprendizagem, como <b>webinars</b>, <b>masterclasses</b> e <b>workshops</b>, permitindo aproximar-se da realidade da indústria e desenvolver <b>competências práticas valorizadas no mercado</b>.</p>
+
+<script>
+function closeAllTips(){
+  document.querySelectorAll('.coinWrap').forEach(w=>{
+    w.classList.remove('open','flip','above');
+    const c=w.querySelector('.coin');
+    if(c) c.setAttribute('aria-expanded','false');
+    const t=w.querySelector('.tip');
+    if(t){ t.style.left=''; t.style.right=''; t.style.transform=''; }
+  });
+}
+
+document.querySelectorAll('.coinWrap').forEach(wrap=>{
+  const coin=wrap.querySelector('.coin');
+  const tip=wrap.querySelector('.tip');
+  wrap.addEventListener('click',e=>e.stopPropagation());
+  if(tip) tip.addEventListener('click',e=>e.stopPropagation());
+  if(!coin) return;
+
+  coin.addEventListener('click',e=>{
+    e.stopPropagation();
+    coin.classList.remove('hit'); void coin.offsetWidth; coin.classList.add('hit');
+    const willOpen=!wrap.classList.contains('open');
+    closeAllTips();
+    if(!willOpen) return;
+    wrap.classList.add('open');
+    coin.setAttribute('aria-expanded','true');
+    if(!tip) return;
+    wrap.classList.remove('flip','above');
+
+    requestAnimationFrame(()=>{
+      let r=tip.getBoundingClientRect();
+      if(r.right > window.innerWidth - 8) wrap.classList.add('flip');
+
+      requestAnimationFrame(()=>{
+        let r2=tip.getBoundingClientRect();
+        const overLeft=8-r2.left;
+        const overRight=r2.right-(window.innerWidth-8);
+        if(overLeft>0){
+          tip.style.left='50%';
+          tip.style.right='auto';
+          tip.style.transform='translateX(calc(-50% + '+overLeft+'px))';
+        } else if(overRight>0){
+          tip.style.left='50%';
+          tip.style.right='auto';
+          tip.style.transform='translateX(calc(-50% - '+overRight+'px))';
+        }
+
+        requestAnimationFrame(()=>{
+          const r3=tip.getBoundingClientRect();
+          if(r3.bottom > window.innerHeight - 8){
+            wrap.classList.add('above');
+            tip.style.left=''; tip.style.right=''; tip.style.transform='';
+            requestAnimationFrame(()=>{
+              const r4=tip.getBoundingClientRect();
+              const overLeft2=8-r4.left;
+              const overRight2=r4.right-(window.innerWidth-8);
+              if(overLeft2>0){
+                tip.style.left='50%'; tip.style.right='auto';
+                tip.style.transform='translateX(calc(-50% + '+overLeft2+'px))';
+              } else if(overRight2>0){
+                tip.style.left='50%'; tip.style.right='auto';
+                tip.style.transform='translateX(calc(-50% - '+overRight2+'px))';
+              }
+            });
+          }
+        });
+      });
+    });
+  });
+});
+
+document.addEventListener('click', closeAllTips);
+window.addEventListener('resize', closeAllTips);
+</script>
+</body>
+</html>
