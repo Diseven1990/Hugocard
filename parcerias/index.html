@@ -6,83 +6,88 @@
 
 <style>
 
-*{
-box-sizing:border-box;
+:root{
+--screen-left:292px;
+--screen-top:160px;
+--screen-width:310px;
+--screen-height:200px;
+--fast-speed:220;
+--slow-speed:95;
+}
+
+*{box-sizing:border-box;}
+
+html,body{
 margin:0;
-padding:0;
-}
-
-body{
-background:#000;
-width:820px;
-height:744px;
+width:900px;
+height:620px;
 overflow:hidden;
-font-family:Arial, Helvetica, sans-serif;
+background:#000;
+font-family:Arial,Helvetica,sans-serif;
 }
-
-/* cena completa */
 
 .scene{
 position:relative;
-width:820px;
-height:744px;
-background:url("fundo.png") no-repeat center;
-background-size:820px 744px;
+width:900px;
+height:620px;
+overflow:hidden;
+background:#000 url("fundo.png") center center no-repeat;
+background-size:900px 620px;
+user-select:none;
 }
-
-/* ecrã do monitor */
 
 .screen{
 position:absolute;
-left:226px;
-top:187px;
-width:365px;
-height:216px;
-background:#000;
+left:var(--screen-left);
+top:var(--screen-top);
+width:var(--screen-width);
+height:var(--screen-height);
 overflow:hidden;
+background:#000;
+border-radius:2px;
 }
 
-/* slider */
-
-.viewport{
+.content,
+.viewport,
+.track,
+.focus-panel{
 position:absolute;
 inset:0;
+}
+
+.viewport{
+overflow:hidden;
 display:flex;
 align-items:center;
-overflow:hidden;
 }
 
 .track{
 display:flex;
 align-items:center;
 will-change:transform;
+transform:translate3d(0,0,0);
 }
 
 .item{
-flex:0 0 33.33%;
+flex:0 0 33.333%;
+height:100%;
 display:flex;
 align-items:center;
 justify-content:center;
+padding:0 6px;
 }
 
 .item img{
-max-width:90%;
+max-width:95%;
 max-height:85%;
 object-fit:contain;
-filter:
-brightness(1.05)
-contrast(1.05)
-drop-shadow(0 0 6px rgba(255,255,255,.15));
+opacity:.98;
 }
 
-/* painel focus */
-
 .focus-panel{
-position:absolute;
-inset:0;
 display:grid;
 place-items:center;
-background:#000;
+padding:12px;
 opacity:0;
 visibility:hidden;
 transition:.2s;
@@ -93,23 +98,18 @@ opacity:1;
 visibility:visible;
 }
 
-.screen.is-focus .track{
-opacity:0;
-}
-
 .focus-card{
 text-align:center;
-color:#fff;
-padding:10px;
+color:#f2f6ff;
 }
 
 .focus-logo{
-max-width:130px;
-margin-bottom:10px;
+max-width:120px;
+margin-bottom:8px;
 }
 
 .focus-desc{
-font-size:13px;
+font-size:12px;
 line-height:1.4;
 }
 
@@ -122,15 +122,17 @@ line-height:1.4;
 
 <div class="screen" id="screen">
 
+<div class="content">
+
 <div class="viewport">
 <div class="track" id="track"></div>
 </div>
 
 <div class="focus-panel" id="focusPanel">
-
 <div class="focus-card">
-<img id="focusLogo" class="focus-logo">
-<p id="focusDesc" class="focus-desc"></p>
+<img class="focus-logo" id="focusLogo">
+<p class="focus-desc" id="focusDesc"></p>
+</div>
 </div>
 
 </div>
@@ -141,71 +143,72 @@ line-height:1.4;
 <script>
 
 const companies=[
-
 {
-key:"bee",
-file:"bee.png",
-desc:"Consultora tecnológica focada em transformação digital."
+key:'bee',
+file:'bee.png',
+desc:'Consultora tecnológica focada em transformação digital, desenvolvimento e formação.'
 },
-
 {
-key:"epopeia",
-file:"epopeia.png",
-desc:"Estúdio e publisher de videojogos."
+key:'epopeia',
+file:'epopeia.png',
+desc:'Estúdio e publisher de videojogos com experiência em desenvolvimento, porting e marketing.'
 },
-
 {
-key:"nerd",
-file:"nerd.png",
-desc:"Estúdio de videojogos multi-plataforma."
+key:'nerd',
+file:'nerd.png',
+desc:'Estúdio de videojogos focado em experiências originais multi-plataforma.'
 },
-
 {
-key:"fpe",
-file:"fpe.png",
-desc:"Federação Portuguesa de Desportos Eletrónicos."
+key:'fpe',
+file:'fpe.png',
+desc:'Federação Portuguesa de Desportos Eletrónicos dedicada à promoção do esports em Portugal.'
 }
-
 ];
 
-const screen=document.getElementById("screen");
 const track=document.getElementById("track");
+const screen=document.getElementById("screen");
 const focusLogo=document.getElementById("focusLogo");
 const focusDesc=document.getElementById("focusDesc");
 
+let speed=220;
 let x=0;
-let speed=120;
-let paused=false;
+let itemWidth=0;
 
 function build(){
 
 const seq=[...companies,...companies,...companies];
 
 track.innerHTML=seq.map(c=>`
-
 <div class="item" data-key="${c.key}">
 <img src="${c.file}">
 </div>
-
 `).join("");
 
 track.querySelectorAll(".item").forEach(el=>{
-
-el.addEventListener("mouseenter",()=>focus(el.dataset.key));
-
+el.addEventListener("mouseenter",()=>{
+focus(el.dataset.key);
+});
 });
 
+measure();
+
+}
+
+function measure(){
+const first=track.querySelector(".item");
+itemWidth=first.offsetWidth;
+x=-itemWidth;
 }
 
 function animate(){
 
-if(!paused){
-
 x-=speed*0.016;
 
-track.style.transform=`translate3d(${x}px,0,0)`;
+const loop=itemWidth*companies.length;
 
-}
+if(x<=-(loop*2)) x+=loop;
+
+track.style.transform=`translate3d(${x}px,0,0)`;
 
 requestAnimationFrame(animate);
 
@@ -216,26 +219,18 @@ function focus(key){
 const c=companies.find(a=>a.key===key);
 if(!c)return;
 
-paused=true;
-
 screen.classList.add("is-focus");
 
 focusLogo.src=c.file;
-
 focusDesc.innerHTML=c.desc;
 
 }
 
 screen.addEventListener("mouseleave",()=>{
-
 screen.classList.remove("is-focus");
-
-paused=false;
-
 });
 
 build();
-
 animate();
 
 </script>
