@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Parcerias</title>
+
+<style>
+
+:root{
+--screen-left:292px;
+--screen-top:160px;
+--screen-width:310px;
+--screen-height:200px;
+--fast-speed:220;
+--slow-speed:95;
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+margin:0;
+width:900px;
+height:620px;
+overflow:hidden;
+background:#000;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.scene{
+position:relative;
+width:900px;
+height:620px;
+overflow:hidden;
+background:#000 url("fundo.png") center center no-repeat;
+background-size:900px 620px;
+user-select:none;
+}
+
+.screen{
+position:absolute;
+left:var(--screen-left);
+top:var(--screen-top);
+width:var(--screen-width);
+height:var(--screen-height);
+overflow:hidden;
+background:#000;
+border-radius:2px;
+}
+
+.content,
+.viewport,
+.track,
+.focus-panel{
+position:absolute;
+inset:0;
+}
+
+.viewport{
+overflow:hidden;
+display:flex;
+align-items:center;
+}
+
+.track{
+display:flex;
+align-items:center;
+will-change:transform;
+transform:translate3d(0,0,0);
+}
+
+.item{
+flex:0 0 33.333%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 6px;
+}
+
+.item img{
+max-width:95%;
+max-height:85%;
+object-fit:contain;
+opacity:.98;
+}
+
+.focus-panel{
+display:grid;
+place-items:center;
+padding:12px;
+opacity:0;
+visibility:hidden;
+transition:.2s;
+}
+
+.screen.is-focus .focus-panel{
+opacity:1;
+visibility:visible;
+}
+
+.focus-card{
+text-align:center;
+color:#f2f6ff;
+}
+
+.focus-logo{
+max-width:120px;
+margin-bottom:8px;
+}
+
+.focus-desc{
+font-size:12px;
+line-height:1.4;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+<div class="screen" id="screen">
+
+<div class="content">
+
+<div class="viewport">
+<div class="track" id="track"></div>
+</div>
+
+<div class="focus-panel" id="focusPanel">
+<div class="focus-card">
+<img class="focus-logo" id="focusLogo">
+<p class="focus-desc" id="focusDesc"></p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const companies=[
+{
+key:'bee',
+file:'bee.png',
+desc:'Consultora tecnológica focada em transformação digital, desenvolvimento e formação.'
+},
+{
+key:'epopeia',
+file:'epopeia.png',
+desc:'Estúdio e publisher de videojogos com experiência em desenvolvimento, porting e marketing.'
+},
+{
+key:'nerd',
+file:'nerd.png',
+desc:'Estúdio de videojogos focado em experiências originais multi-plataforma.'
+},
+{
+key:'fpe',
+file:'fpe.png',
+desc:'Federação Portuguesa de Desportos Eletrónicos dedicada à promoção do esports em Portugal.'
+}
+];
+
+const track=document.getElementById("track");
+const screen=document.getElementById("screen");
+const focusLogo=document.getElementById("focusLogo");
+const focusDesc=document.getElementById("focusDesc");
+
+let speed=220;
+let x=0;
+let itemWidth=0;
+
+function build(){
+
+const seq=[...companies,...companies,...companies];
+
+track.innerHTML=seq.map(c=>`
+<div class="item" data-key="${c.key}">
+<img src="${c.file}">
+</div>
+`).join("");
+
+track.querySelectorAll(".item").forEach(el=>{
+el.addEventListener("mouseenter",()=>{
+focus(el.dataset.key);
+});
+});
+
+measure();
+
+}
+
+function measure(){
+const first=track.querySelector(".item");
+itemWidth=first.offsetWidth;
+x=-itemWidth;
+}
+
+function animate(){
+
+x-=speed*0.016;
+
+const loop=itemWidth*companies.length;
+
+if(x<=-(loop*2)) x+=loop;
+
+track.style.transform=`translate3d(${x}px,0,0)`;
+
+requestAnimationFrame(animate);
+
+}
+
+function focus(key){
+
+const c=companies.find(a=>a.key===key);
+if(!c)return;
+
+screen.classList.add("is-focus");
+
+focusLogo.src=c.file;
+focusDesc.innerHTML=c.desc;
+
+}
+
+screen.addEventListener("mouseleave",()=>{
+screen.classList.remove("is-focus");
+});
+
+build();
+animate();
+
+</script>
+
+</body>
+</html>

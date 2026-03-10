@@ -2,237 +2,442 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parcerias</title>
 
 <style>
-
 :root{
---screen-left:292px;
---screen-top:160px;
---screen-width:310px;
---screen-height:200px;
---fast-speed:220;
---slow-speed:95;
+  --screen-left:32.37%;
+  --screen-top:25.65%;
+  --screen-width:34.38%;
+  --screen-height:32.13%;
+  --fast-speed:220;
+  --slow-speed:95;
 }
 
-*{box-sizing:border-box;}
+*{box-sizing:border-box}
 
 html,body{
-margin:0;
-width:900px;
-height:620px;
-overflow:hidden;
-background:#000;
-font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 .scene{
-position:relative;
-width:900px;
-height:620px;
-overflow:hidden;
-background:#000 url("fundo.png") center center no-repeat;
-background-size:900px 620px;
-user-select:none;
+  position:relative;
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  background:#000 url("fundo.png") center center / cover no-repeat;
+  user-select:none;
 }
 
 .screen{
-position:absolute;
-left:var(--screen-left);
-top:var(--screen-top);
-width:var(--screen-width);
-height:var(--screen-height);
-overflow:hidden;
-background:#000;
-border-radius:2px;
+  position:absolute;
+  left:var(--screen-left);
+  top:var(--screen-top);
+  width:var(--screen-width);
+  height:var(--screen-height);
+  overflow:hidden;
+  background:#000;
+  border-radius:2px;
+  isolation:isolate;
+  cursor:default;
 }
 
 .content,
 .viewport,
 .track,
 .focus-panel{
-position:absolute;
-inset:0;
+  position:absolute;
+  inset:0;
+}
+
+.content{
+  z-index:2;
+  overflow:hidden;
 }
 
 .viewport{
-overflow:hidden;
-display:flex;
-align-items:center;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
 }
 
 .track{
-display:flex;
-align-items:center;
-will-change:transform;
-transform:translate3d(0,0,0);
+  display:flex;
+  align-items:center;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+  transition:opacity .18s ease;
 }
 
 .item{
-flex:0 0 33.333%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:0 6px;
+  flex:0 0 33.3333%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 1.2%;
+}
+
+.logo-wrap{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .item img{
-max-width:95%;
-max-height:85%;
-object-fit:contain;
-opacity:.98;
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:97%;
+  max-height:84%;
+  object-fit:contain;
+  pointer-events:none;
+  opacity:.98;
+  filter:
+    brightness(1.05)
+    contrast(1.04)
+    drop-shadow(0 0 8px rgba(255,255,255,.09))
+    drop-shadow(0 0 18px rgba(255,255,255,.05));
+}
+
+.screen.is-focus .track{
+  opacity:0;
+  pointer-events:none;
 }
 
 .focus-panel{
-display:grid;
-place-items:center;
-padding:12px;
-opacity:0;
-visibility:hidden;
-transition:.2s;
+  display:grid;
+  place-items:center;
+  padding:4.5% 6% 5.5%;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .18s ease, visibility .18s ease;
+  z-index:3;
+  pointer-events:none;
+  background:#000;
 }
 
 .screen.is-focus .focus-panel{
-opacity:1;
-visibility:visible;
+  opacity:1;
+  visibility:visible;
 }
 
 .focus-card{
-text-align:center;
-color:#f2f6ff;
+  width:100%;
+  max-width:88%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#f2f6ff;
+  transform:translateY(4px) scale(.986);
+  transition:transform .20s ease, opacity .20s ease;
+  opacity:0;
+}
+
+.screen.is-focus .focus-card{
+  transform:translateY(0) scale(1);
+  opacity:1;
 }
 
 .focus-logo{
-max-width:120px;
-margin-bottom:8px;
+  width:auto;
+  max-width:42%;
+  max-height:32%;
+  margin-bottom:4.2%;
+  filter:
+    brightness(1.08)
+    contrast(1.06)
+    drop-shadow(0 0 10px rgba(255,255,255,.10))
+    drop-shadow(0 0 20px rgba(255,255,255,.06));
 }
 
 .focus-desc{
-font-size:12px;
-line-height:1.4;
+  max-width:88%;
+  font-size:clamp(10px,.78vw,16px);
+  line-height:1.45;
+  color:rgba(241,246,255,.92);
+  margin:0 auto;
+  text-shadow:0 0 10px rgba(255,255,255,.05);
 }
 
+.cursor-line{
+  display:inline-block;
+  margin-left:4px;
+  animation:blink .9s steps(1) infinite;
+}
+
+.crt-glow,
+.scanlines,
+.screen-noise,
+.vignette,
+.glass-reflection,
+.flicker{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.crt-glow{
+  z-index:4;
+  background:
+    radial-gradient(circle at center, rgba(38,116,255,.09) 0%, rgba(38,116,255,.03) 34%, rgba(0,0,0,0) 68%),
+    linear-gradient(180deg, rgba(110,170,255,.04) 0%, rgba(255,255,255,.01) 18%, rgba(0,0,0,0) 62%);
+  mix-blend-mode:screen;
+}
+
+.scanlines{
+  z-index:5;
+  opacity:.16;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.032) 0px,
+    rgba(255,255,255,.032) 1px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0) 4px
+  );
+  animation:scanShift 10s linear infinite;
+}
+
+.screen-noise{
+  z-index:6;
+  opacity:.04;
+  background-image:
+    radial-gradient(rgba(255,255,255,.35) .55px, transparent .55px),
+    radial-gradient(rgba(255,255,255,.22) .45px, transparent .45px);
+  background-position:0 0, 8px 8px;
+  background-size:13px 13px, 17px 17px;
+  mix-blend-mode:soft-light;
+}
+
+.vignette{
+  z-index:7;
+  background:radial-gradient(circle at center, rgba(0,0,0,0) 52%, rgba(0,0,0,.12) 78%, rgba(0,0,0,.28) 100%);
+}
+
+.glass-reflection{
+  z-index:8;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,.012) 5%, rgba(255,255,255,0) 13%),
+    radial-gradient(circle at 50% 0%, rgba(120,180,255,.08) 0%, rgba(120,180,255,0) 34%);
+  opacity:.64;
+  mix-blend-mode:screen;
+}
+
+.flicker{
+  z-index:9;
+  background:rgba(255,255,255,.018);
+  opacity:.028;
+  animation:flicker .16s infinite alternate;
+}
+
+@keyframes flicker{
+  0%{opacity:.02}
+  25%{opacity:.038}
+  50%{opacity:.018}
+  75%{opacity:.03}
+  100%{opacity:.022}
+}
+
+@keyframes scanShift{
+  from{transform:translateY(0)}
+  to{transform:translateY(6px)}
+}
+
+@keyframes blink{
+  0%,49%{opacity:1}
+  50%,100%{opacity:0}
+}
+
+@media (max-width:1100px){
+  .focus-logo{max-width:48%}
+  .focus-desc{max-width:92%;font-size:clamp(10px,1vw,14px)}
+}
+
+@media (max-width:800px){
+  .item{flex-basis:40%}
+  .focus-logo{max-width:50%}
+}
 </style>
 </head>
-
 <body>
 
 <div class="scene">
+  <div class="screen" id="screen">
+    <div class="content">
+      <div class="viewport">
+        <div class="track" id="track"></div>
+      </div>
 
-<div class="screen" id="screen">
+      <div class="focus-panel" id="focusPanel" aria-hidden="true">
+        <div class="focus-card">
+          <img class="focus-logo" id="focusLogo" src="" alt="">
+          <p class="focus-desc" id="focusDesc"></p>
+        </div>
+      </div>
+    </div>
 
-<div class="content">
-
-<div class="viewport">
-<div class="track" id="track"></div>
-</div>
-
-<div class="focus-panel" id="focusPanel">
-<div class="focus-card">
-<img class="focus-logo" id="focusLogo">
-<p class="focus-desc" id="focusDesc"></p>
-</div>
-</div>
-
-</div>
-
-</div>
+    <div class="crt-glow"></div>
+    <div class="scanlines"></div>
+    <div class="screen-noise"></div>
+    <div class="vignette"></div>
+    <div class="glass-reflection"></div>
+    <div class="flicker"></div>
+  </div>
 </div>
 
 <script>
-
-const companies=[
-{
-key:'bee',
-file:'bee.png',
-desc:'Consultora tecnológica focada em transformação digital, desenvolvimento e formação.'
-},
-{
-key:'epopeia',
-file:'epopeia.png',
-desc:'Estúdio e publisher de videojogos com experiência em desenvolvimento, porting e marketing.'
-},
-{
-key:'nerd',
-file:'nerd.png',
-desc:'Estúdio de videojogos focado em experiências originais multi-plataforma.'
-},
-{
-key:'fpe',
-file:'fpe.png',
-desc:'Federação Portuguesa de Desportos Eletrónicos dedicada à promoção do esports em Portugal.'
-}
+const companies = [
+  {
+    key: "bee",
+    file: "bee.png",
+    desc: "Consultora tecnológica focada em transformação digital, consultoria, desenvolvimento, I&D e formação.<span class='cursor-line'>_</span>"
+  },
+  {
+    key: "epopeia",
+    file: "epopeia.png",
+    desc: "Estúdio e publisher de videojogos com experiência em desenvolvimento, porting, marketing e localização.<span class='cursor-line'>_</span>"
+  },
+  {
+    key: "nerd",
+    file: "nerd.png",
+    desc: "Estúdio de videojogos focado em experiências originais multi-plataforma, co-development, porting e publishing.<span class='cursor-line'>_</span>"
+  },
+  {
+    key: "fpe",
+    file: "fpe.png",
+    desc: "A Federação Portuguesa de Desportos Eletrónicos (FPDE) é uma entidade sem fins lucrativos que visa promover, regular e desenvolver o esports em Portugal.<span class='cursor-line'>_</span>"
+  }
 ];
 
-const track=document.getElementById("track");
-const screen=document.getElementById("screen");
-const focusLogo=document.getElementById("focusLogo");
-const focusDesc=document.getElementById("focusDesc");
+const screen = document.getElementById("screen");
+const track = document.getElementById("track");
+const focusPanel = document.getElementById("focusPanel");
+const focusLogo = document.getElementById("focusLogo");
+const focusDesc = document.getElementById("focusDesc");
 
-let speed=220;
-let x=0;
-let itemWidth=0;
+let currentX = 0;
+let targetSpeed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fast-speed"));
+let currentSpeed = targetSpeed;
+let itemWidth = 0;
+let isScreenHover = false;
+let focusedKey = null;
+let isPaused = false;
+let lastTs = 0;
 
-function build(){
+function buildTrack(){
+  const sequence = [...companies, ...companies, ...companies];
 
-const seq=[...companies,...companies,...companies];
+  track.innerHTML = sequence.map((company, index) => `
+    <div class="item" data-key="${company.key}" data-index="${index}">
+      <div class="logo-wrap">
+        <img src="${company.file}" alt="">
+      </div>
+    </div>
+  `).join("");
 
-track.innerHTML=seq.map(c=>`
-<div class="item" data-key="${c.key}">
-<img src="${c.file}">
-</div>
-`).join("");
-
-track.querySelectorAll(".item").forEach(el=>{
-el.addEventListener("mouseenter",()=>{
-focus(el.dataset.key);
-});
-});
-
-measure();
-
+  track.querySelectorAll(".item").forEach(item => {
+    item.addEventListener("pointerenter", () => {
+      focusCompany(item.dataset.key);
+    });
+  });
 }
 
 function measure(){
-const first=track.querySelector(".item");
-itemWidth=first.offsetWidth;
-x=-itemWidth;
+  const first = track.querySelector(".item");
+  if(!first) return;
+
+  itemWidth = first.getBoundingClientRect().width;
+  currentX = -itemWidth * companies.length;
+  applyTransform();
 }
 
-function animate(){
-
-x-=speed*0.016;
-
-const loop=itemWidth*companies.length;
-
-if(x<=-(loop*2)) x+=loop;
-
-track.style.transform=`translate3d(${x}px,0,0)`;
-
-requestAnimationFrame(animate);
-
+function applyTransform(){
+  track.style.transform = `translate3d(${currentX}px,0,0)`;
 }
 
-function focus(key){
+function wrapTrack(){
+  const loopWidth = itemWidth * companies.length;
+  if(!loopWidth) return;
 
-const c=companies.find(a=>a.key===key);
-if(!c)return;
+  while(currentX <= -(loopWidth * 2)){
+    currentX += loopWidth;
+  }
 
-screen.classList.add("is-focus");
-
-focusLogo.src=c.file;
-focusDesc.innerHTML=c.desc;
-
+  while(currentX > -loopWidth){
+    currentX -= loopWidth;
+  }
 }
 
-screen.addEventListener("mouseleave",()=>{
-screen.classList.remove("is-focus");
+function animate(ts){
+  if(!lastTs) lastTs = ts;
+  const delta = Math.min(32, ts - lastTs) / 1000;
+  lastTs = ts;
+
+  currentSpeed += (targetSpeed - currentSpeed) * Math.min(1, delta * 6);
+
+  if(!isPaused && !focusedKey){
+    currentX -= currentSpeed * delta;
+    wrapTrack();
+    applyTransform();
+  }
+
+  requestAnimationFrame(animate);
+}
+
+function focusCompany(key){
+  const company = companies.find(c => c.key === key);
+  if(!company) return;
+
+  focusedKey = key;
+  isPaused = true;
+  targetSpeed = 0;
+
+  screen.classList.add("is-focus");
+  focusPanel.setAttribute("aria-hidden", "false");
+  focusLogo.src = company.file;
+  focusLogo.alt = "";
+  focusDesc.innerHTML = company.desc;
+}
+
+function unfocusCompany(){
+  focusedKey = null;
+  isPaused = false;
+  screen.classList.remove("is-focus");
+  focusPanel.setAttribute("aria-hidden", "true");
+
+  targetSpeed = isScreenHover
+    ? parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--slow-speed"))
+    : parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fast-speed"));
+}
+
+screen.addEventListener("pointerenter", () => {
+  isScreenHover = true;
+  if(!focusedKey){
+    targetSpeed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--slow-speed"));
+  }
 });
 
-build();
-animate();
+screen.addEventListener("pointerleave", () => {
+  isScreenHover = false;
+  unfocusCompany();
+});
 
+window.addEventListener("resize", measure);
+
+buildTrack();
+measure();
+requestAnimationFrame(animate);
 </script>
 
 </body>
