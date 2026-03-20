@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Apresentação - Game Art</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body{
+font-family:"Open Sans",sans-serif;
+font-size:16px;
+line-height:1.7;
+max-width:900px;
+margin:40px auto;
+padding:20px;
+color:#222;
+}
+
+p{
+text-align:justify;
+margin-bottom:18px;
+}
+
+figure{
+margin:30px 0;
+text-align:center;
+}
+
+figure img{
+max-width:100%;
+height:auto;
+}
+
+figcaption{
+font-size:14px;
+color:#555;
+margin-top:8px;
+font-style:italic;
+}
+
+a{
+color:#0066cc;
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+.coinWrap{
+display:inline-flex;
+align-items:center;
+position:relative;
+}
+
+.coin{
+width:22px;
+height:22px;
+margin-left:8px;
+border:none;
+padding:0;
+cursor:pointer;
+background:transparent;
+appearance:none;
+-webkit-appearance:none;
+position:relative;
+display:inline-block;
+}
+
+.coin::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:4px;
+background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 55%, #8e8e8e 100%);
+box-shadow:
+inset 0 2px 0 rgba(255,255,255,.85),
+inset 0 -3px 0 rgba(0,0,0,.28),
+0 2px 0 rgba(0,0,0,.28);
+border:2px solid rgba(0,0,0,.55);
+image-rendering: pixelated;
+}
+
+.coin::after{
+content:"?";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-56%);
+font-family:"Press Start 2P", monospace;
+font-size:12px;
+color:#000;
+text-shadow:1px 1px 0 #fff,-1px -1px 0 #fff;
+}
+
+.coin{
+animation: marioBob 1.8s ease-in-out infinite;
+}
+
+@keyframes marioBob{
+0%{ transform: translateY(0); }
+50%{ transform: translateY(-6px); }
+100%{ transform: translateY(0); }
+}
+
+@keyframes marioHit{
+0%{transform:translateY(0)}
+40%{transform:translateY(-10px)}
+70%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
+.coin.hit{
+animation:marioHit 0.35s ease;
+}
+
+.tip{
+display:none;
+position:absolute;
+top:32px;
+left:50%;
+transform:translateX(-50%);
+z-index:999;
+background:#ffffff;
+border:2px solid rgba(0,0,0,0.35);
+border-radius:10px;
+padding:14px;
+width:min(360px, 82vw);
+max-width:min(360px, 82vw);
+box-shadow:0 10px 24px rgba(0,0,0,0.15);
+font-family:"Press Start 2P", monospace;
+font-size:11px;
+line-height:1.7;
+text-align:justify;
+font-weight:normal;
+}
+
+.tip strong{
+display:block;
+margin-bottom:10px;
+font-weight:700;
+text-align:center;
+}
+
+.tip::before{
+content:"";
+position:absolute;
+top:-10px;
+left:50%;
+transform:translateX(-50%);
+border-left:10px solid transparent;
+border-right:10px solid transparent;
+border-bottom:10px solid rgba(0,0,0,0.35);
+}
+.tip::after{
+content:"";
+position:absolute;
+top:-8px;
+left:50%;
+transform:translateX(-50%);
+border-left:9px solid transparent;
+border-right:9px solid transparent;
+border-bottom:9px solid #ffffff;
+}
+
+.coinWrap.flip .tip{
+left:auto;
+right:50%;
+transform:translateX(50%);
+}
+
+.coinWrap.flip .tip::before,
+.coinWrap.flip .tip::after{
+left:50%;
+transform:translateX(-50%);
+}
+
+.coinWrap.top .tip{
+top:auto;
+bottom:32px;
+}
+
+.coinWrap.top .tip::before{
+top:auto;
+bottom:-10px;
+border-left:10px solid transparent;
+border-right:10px solid transparent;
+border-bottom:none;
+border-top:10px solid rgba(0,0,0,0.35);
+}
+
+.coinWrap.top .tip::after{
+top:auto;
+bottom:-8px;
+border-left:9px solid transparent;
+border-right:9px solid transparent;
+border-bottom:none;
+border-top:9px solid #ffffff;
+}
+
+.coinWrap.open .tip{ display:block; }
+</style>
+</head>
+
+<body>
+
+<p>O curso de <strong>Game Art</strong> especializa-se na criação de conteúdos visuais para videojogos. É dirigido a quem tenha interesse em adquirir as competências artísticas e técnicas para a realização de arte para videojogos.</p>
+
+<figure style="text-align:center;">
+<img src="imagens/frames.gif" style="max-width:500px; width:100%; height:auto;">
+</figure>
+
+<p>Os videojogos e a arte digital são uma das principais formas de entretenimento no mercado atual. Esta indústria está num período de crescimento exponencial, gerando milhares de milhões de euros anualmente e ultrapassando, em valor, a indústria da música e do cinema combinadas.</p>
+
+<p>Por consequência, a indústria é cada vez mais exigente, requerendo profissionais qualificados e áreas de conhecimento especializadas nas diferentes subdivisões do desenvolvimento.</p>
+
+
+
+
+
+<p>Com esta formação aprenderá as bases e fundamentos do desenho e da animação, aprofundando técnicas para a criação de <span class="coinWrap"><strong>assets</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Assets</strong>Elementos visuais utilizados num videojogo, como personagens, objetos, cenários, interfaces, animações ou outros recursos gráficos integrados no projeto final.</span></span> para videojogos. Nenhum videojogo sobrevive sem uma componente visual bem estudada e definida; serão sempre necessários assets, personagens, cenários e outros elementos animados para dar vida ao videojogo.</p>
+
+
+<div style="text-align:center; margin:30px 0;">
+    <video controls style="max-width:360px; width:100%; height:auto;">
+        <source src="videos/video1.mp4" type="video/mp4">
+        O seu navegador não suporta vídeo HTML5.
+    </video>
+ <figcaption style="font-size:14px; color:#555; margin-top:6px; font-style:italic;">
+        Vídeo promocional para a Master Jam 5 realizado pelo artista e <b>e-Tutor Hugo Mestre</b>.
+    </figcaption>
+
+<p>A criação de assets é muito mais do que simples ilustração. Estes elementos necessitam de um estudo prévio, de um conceito e de uma idealização. Após o conceito bem definido e estudado, é necessária a introdução da <span class="coinWrap"><strong>animação 2D</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Animação 2D</strong>Processo de criação de movimento em elementos visuais bidimensionais, muito utilizado em videojogos, interfaces e animações em estilo clássico ou pixel art.</span></span> e de outras considerações técnicas e estilísticas que poderá aprofundar ao longo da formação.</p>
+
+<p>O curso foca-se na criação de arte digital e animação 2D com <span class="coinWrap"><strong>Photoshop</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Photoshop</strong>Software amplamente utilizado para edição de imagem e criação de arte digital, ilustração e composição visual para diferentes tipos de projetos criativos.</span></span> e <span class="coinWrap"><strong>Aseprite</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Aseprite</strong>Software muito utilizado para criação de pixel art e animações 2D, especialmente em projetos de videojogos com estética retro ou estilizada.</span></span>, duas das ferramentas mais populares para a criação de elementos e animações, sobretudo em <span class="coinWrap"><strong>pixel art</strong><button class="coin" type="button" aria-label="Ver explicação" aria-expanded="false"></button><span class="tip"><strong>Pixel Art</strong>Estilo visual construído a partir de pixels visíveis, muito associado a videojogos retro, mas ainda hoje amplamente utilizado em projetos independentes e estilizados.</span></span>.</p>
+
+<p>Irá aprender a desenhar tradicionalmente, a conceptualizar as suas ideias e a adaptar o seu trabalho a um estilo nostálgico que lhe permitirá obter bons resultados rapidamente. Conseguirá concretizar as suas ideias e prepará-las para serem utilizadas em videojogos.</p>
+
+<p>Esta formação engloba o trabalho de um artista e designer na indústria de videojogos e será uma ferramenta essencial para entrar e permanecer nesta área.</p>
+
+<p>Ao longo do curso terá a oportunidade de realizar um conjunto de sessões práticas nos centros formativos, onde aplicará os conhecimentos adquiridos ao longo da formação.</p>
+
+<p><b>Na Master.D</b>, além de manuais e <b>recursos didáticos atualizados</b>, terá acesso a um <b>conjunto de ferramentas</b> que enriquecem a sua aprendizagem, como <b>webinars</b>, <b>masterclasses</b> e <b>workshops</b>, permitindo aproximar-se da realidade da indústria e desenvolver <b>competências práticas valorizadas no mercado</b>.</p>
+
+<script>
+function closeAllTips(){
+  document.querySelectorAll('.coinWrap').forEach(w=>{
+    w.classList.remove('open','flip','top');
+    const c = w.querySelector('.coin');
+    if(c) c.setAttribute('aria-expanded','false');
+    const t = w.querySelector('.tip');
+    if(t){ t.style.left=''; t.style.transform=''; }
+  });
+}
+
+function adjustTipPosition(wrap, tip){
+  wrap.classList.remove('flip','top');
+  tip.style.left = '';
+  tip.style.transform = '';
+
+  requestAnimationFrame(()=>{
+    let r = tip.getBoundingClientRect();
+
+    if(r.right > window.innerWidth - 8){
+      wrap.classList.add('flip');
+    }
+
+    requestAnimationFrame(()=>{
+      r = tip.getBoundingClientRect();
+
+      const overLeft = 8 - r.left;
+      const overRight = r.right - (window.innerWidth - 8);
+
+      if(overLeft > 0){
+        tip.style.left = '50%';
+        tip.style.transform = 'translateX(calc(-50% + ' + overLeft + 'px))';
+      } else if(overRight > 0){
+        tip.style.left = '50%';
+        tip.style.transform = 'translateX(calc(-50% - ' + overRight + 'px))';
+      }
+
+      requestAnimationFrame(()=>{
+        const r3 = tip.getBoundingClientRect();
+        const bottomLimit = window.innerHeight - 12;
+        const topLimit = 12;
+
+        if(r3.bottom > bottomLimit){
+          wrap.classList.add('top');
+        }
+
+        requestAnimationFrame(()=>{
+          const r4 = tip.getBoundingClientRect();
+
+          if(r4.top < topLimit && wrap.classList.contains('top')){
+            wrap.classList.remove('top');
+          }
+
+          const r5 = tip.getBoundingClientRect();
+          const finalOverLeft = 8 - r5.left;
+          const finalOverRight = r5.right - (window.innerWidth - 8);
+
+          if(finalOverLeft > 0){
+            tip.style.left = '50%';
+            tip.style.transform = 'translateX(calc(-50% + ' + finalOverLeft + 'px))';
+          } else if(finalOverRight > 0){
+            tip.style.left = '50%';
+            tip.style.transform = 'translateX(calc(-50% - ' + finalOverRight + 'px))';
+          }
+        });
+      });
+    });
+  });
+}
+
+document.querySelectorAll('.coinWrap').forEach(wrap=>{
+  const coin = wrap.querySelector('.coin');
+  const tip  = wrap.querySelector('.tip');
+
+  wrap.addEventListener('click', (e)=>e.stopPropagation());
+  if(tip) tip.addEventListener('click', (e)=>e.stopPropagation());
+
+  coin.addEventListener('click', (e)=>{
+    e.stopPropagation();
+
+    coin.classList.remove('hit');
+    void coin.offsetWidth;
+    coin.classList.add('hit');
+
+    const willOpen = !wrap.classList.contains('open');
+    closeAllTips();
+    if(!willOpen) return;
+
+    wrap.classList.add('open');
+    coin.setAttribute('aria-expanded','true');
+
+    if(!tip) return;
+    adjustTipPosition(wrap, tip);
+  });
+});
+
+document.addEventListener('click', closeAllTips);
+window.addEventListener('resize', closeAllTips);
+</script>
+
+</body>
+</html>

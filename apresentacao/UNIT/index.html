@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Apresentação - Programação de Videojogos com Unity</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:"Open Sans",sans-serif;
+font-size:16px;
+line-height:1.7;
+max-width:900px;
+margin:40px auto;
+padding:20px;
+color:#222;
+}
+
+p{
+text-align:justify;
+margin-bottom:18px;
+}
+
+.coinWrap{
+display:inline-flex;
+align-items:center;
+position:relative;
+}
+
+.coin{
+width:22px;
+height:22px;
+margin-left:8px;
+border:none;
+padding:0;
+cursor:pointer;
+background:transparent;
+position:relative;
+display:inline-block;
+animation:marioBob 1.8s ease-in-out infinite;
+}
+
+/* bloco estilo mario */
+
+.coin::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:4px;
+background: linear-gradient(180deg,#fff 0%,#dcdcdc 55%,#8e8e8e 100%);
+box-shadow:
+inset 0 2px 0 rgba(255,255,255,.85),
+inset 0 -3px 0 rgba(0,0,0,.28),
+0 2px 0 rgba(0,0,0,.28);
+border:2px solid rgba(0,0,0,.55);
+}
+
+.coin::after{
+content:"?";
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-56%);
+font-family:"Press Start 2P", monospace;
+font-size:12px;
+color:#000;
+}
+
+/* animação flutuar */
+
+@keyframes marioBob{
+0%{ transform:translateY(0); }
+50%{ transform:translateY(-6px); }
+100%{ transform:translateY(0); }
+}
+
+/* salto ao clicar */
+
+@keyframes marioHit{
+0%{transform:translateY(0)}
+40%{transform:translateY(-10px)}
+70%{transform:translateY(-4px)}
+100%{transform:translateY(0)}
+}
+
+.coin.hit{
+animation:marioHit .35s ease;
+}
+
+.tip{
+display:none;
+position:absolute;
+top:32px;
+left:50%;
+transform:translateX(-50%);
+background:#fff;
+border:2px solid rgba(0,0,0,0.35);
+border-radius:10px;
+padding:14px;
+width:min(360px,82vw);
+box-shadow:0 10px 24px rgba(0,0,0,0.15);
+font-family:"Press Start 2P", monospace;
+font-size:11px;
+line-height:1.7;
+}
+
+.coinWrap.open .tip{
+display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<p><strong>GAME OVER?</strong> Antes pelo contrário. O “vou jogar” já não é o que era. A mentalidade está a mudar e isso não acontece por mero acaso. A <span class="coinWrap"><strong>indústria dos videojogos</strong><button class="coin"></button><span class="tip"><strong>Indústria dos Videojogos</strong>Setor que envolve o desenvolvimento, produção e distribuição de videojogos, incluindo áreas como programação, arte digital, design e animação.</span></span> continua a crescer globalmente e Portugal acompanha esta tendência.</p>
+
+<div style="text-align:center; margin:30px 0;">
+
+<video autoplay muted loop playsinline style="max-width:600px; width:100%; height:auto;">
+<source src="videos/repeat.mp4" type="video/mp4">
+O seu navegador não suporta vídeo HTML5.
+</video>
+
+<figcaption style="font-size:14px; color:#555; margin-top:6px; font-style:italic;">
+Vídeo retirado do site oficial de Unity 3D.
+</figcaption>
+
+</div>
+
+<p>Trata-se de um setor dinâmico e em constante evolução que gera milhões de euros anualmente. Os jogadores portugueses procuram cada vez mais experiências de qualidade e inovadoras. Segundo estudos recentes realizados pela Newzoo, Portugal encontra-se entre os países que geram receitas relevantes dentro do mercado global de videojogos.</p>
+
+<p><span class="coinWrap"><strong>Unity</strong><button class="coin"></button><span class="tip"><strong>Unity</strong>Motor de desenvolvimento de videojogos amplamente utilizado para criar jogos 2D e 3D para computador, consolas e dispositivos móveis.</span></span> é um dos motores mais conhecidos tanto por profissionais como por estudantes. Este <span class="coinWrap"><strong>motor de jogo</strong><button class="coin"></button><span class="tip"><strong>Motor de Jogo</strong>Software utilizado para desenvolver videojogos, permitindo gerir gráficos, física, interações e programação do jogo.</span></span> é frequentemente utilizado no início do percurso profissional.</p>
+
+<figure style="text-align:center;">
+<img src="imagens/1.avif" style="max-width:700px; width:100%; height:auto;">
+</figure>
+
+<p>Após concluir esta formação, poderá desenvolver a sua atividade como <span class="coinWrap"><strong>game developer</strong><button class="coin"></button><span class="tip"><strong>Game Developer</strong>Profissional responsável pela criação e programação de videojogos.</span></span>, participando em diferentes projetos ou explorando oportunidades no <span class="coinWrap"><strong>mercado independente</strong><button class="coin"></button><span class="tip"><strong>Mercado Independente</strong>Segmento da indústria onde criadores desenvolvem e publicam videojogos de forma autónoma.</span></span>.</p>
+
+<p><b>Na Master.D</b>, além de manuais e <b>recursos didáticos atualizados</b>, terá acesso a um <b>conjunto de ferramentas</b> que enriquecem a sua aprendizagem, como <b>webinars</b>, <b>masterclasses</b> e <b>workshops</b>, permitindo aproximar-se da realidade da indústria e desenvolver <b>competências práticas valorizadas no mercado</b>.</p>
+<script>
+
+document.querySelectorAll(".coinWrap").forEach(wrap=>{
+const coin=wrap.querySelector(".coin");
+
+coin.addEventListener("click",(e)=>{
+
+e.stopPropagation();
+
+/* salto mario */
+
+coin.classList.remove("hit");
+void coin.offsetWidth;
+coin.classList.add("hit");
+
+/* tooltip */
+
+document.querySelectorAll(".coinWrap").forEach(w=>w.classList.remove("open"));
+wrap.classList.toggle("open");
+
+});
+
+});
+
+document.addEventListener("click",()=>{
+document.querySelectorAll(".coinWrap").forEach(w=>w.classList.remove("open"));
+});
+
+</script>
+
+</body>
+</html>
